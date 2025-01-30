@@ -8,7 +8,7 @@ const { children } = Astro.props;
 <p>
     {
         children.map((child) =>
-            child.type === "link" ? (
+            child.type === "link" || child.type === "autolink" ? (
                 <Link fields={child.fields} children={child.children} />
             ) : (
                 <Text content={renderNode(child)} />

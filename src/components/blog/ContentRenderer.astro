@@ -23,7 +23,11 @@ const { node } = Astro.props as { node: Node };
 
 {node.type === "quote" && <Blockquote children={node.children ?? []} />}
 
-{node.type === "link" && <Link fields={node.fields} children={node.children ?? []} />}
+{
+    (node.type == "link" || node.type == "autolink") && (
+        <Link fields={node.fields} children={node.children ?? []} />
+    )
+}
 
 {
     node.type === "block" && node.fields?.blockType === "code" && (
