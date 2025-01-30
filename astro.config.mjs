@@ -21,7 +21,7 @@ export default defineConfig({
             tailwindcss(),
             // @ts-ignore
             viteS3SyncPublicDirPlugin({
-                awsRegion: process.env.S3_REGION,
+                awsRegion: process.env.AWS_REGION,
                 awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID,
                 awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
                 s3Endpoint: process.env.S3_ENDPOINT,
