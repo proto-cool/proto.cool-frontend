@@ -18,11 +18,12 @@ function enable() {
     const elements = document.querySelectorAll(`[data-${config.attribute_prefix}]`);
 
     elements.forEach((element: Element) => {
-        // Remove data attributes from element
-        removeDataAttributes(element);
-
         // if the user has reduced motion enabled, return
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            // Remove data attributes from element
+            removeDataAttributes(element);
+            return;
+        }
 
         const animationName = getAttribute(element);
         if (!animationName) return;
@@ -90,6 +91,9 @@ function enable() {
                     options as AnimationOptions,
                 );
             });
+
+            // Remove data attributes from element
+            removeDataAttributes(element);
         } else {
             console.warn(`No predefined animation found for "${animationName}"`);
         }
