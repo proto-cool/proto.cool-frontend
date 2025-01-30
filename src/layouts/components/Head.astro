@@ -65,9 +65,9 @@ const isProd = import.meta.env.PROD;
             const theme = getTheme();
 
             if (theme === "light") {
-                document.documentElement.classList.toggle("dark", false);
+                document.documentElement.setAttribute("data-theme", "dark");
             } else {
-                document.documentElement.classList.toggle("dark", true);
+                document.documentElement.setAttribute("data-theme", "light");
             }
 
             window.localStorage.setItem("theme", theme);

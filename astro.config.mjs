@@ -1,9 +1,8 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-
-import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 
+import tailwindcss from "@tailwindcss/vite";
 import viteS3SyncPublicDirPlugin from "./plugins/vite-s3-sync-public-dir.js";
 
 // https://astro.build/config
@@ -16,14 +15,10 @@ export default defineConfig({
     },
     compressHTML: true,
     prefetch: true,
-    integrations: [
-        tailwind({
-            applyBaseStyles: false,
-        }),
-        sitemap(),
-    ],
+    integrations: [sitemap()],
     vite: {
         plugins: [
+            tailwindcss(),
             // @ts-ignore
             viteS3SyncPublicDirPlugin({
                 awsRegion: process.env.S3_REGION,
