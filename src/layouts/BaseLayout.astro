@@ -68,7 +68,7 @@ const {
 
                 element.setAttribute("data-theme", currentValue === "light" ? "dark" : "light");
 
-                localStorage.setItem("theme", currentValue !== "light" ? "dark" : "light");
+                localStorage.setItem("theme", currentValue === "light" ? "dark" : "light");
             };
 
             const setupThemeToggles = () => {
@@ -80,8 +80,10 @@ const {
             };
 
             document.addEventListener("astro:after-swap", function () {
-                if (window.getTheme() === "dark")
-                    document.documentElement.classList.toggle("dark", true);
+                element.setAttribute(
+                    "data-theme",
+                    window.getTheme() === "light" ? "light" : "dark",
+                );
 
                 setupThemeToggles();
             });
