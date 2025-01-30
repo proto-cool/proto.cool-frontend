@@ -1,12 +1,12 @@
 # proto.cool - an Astro blog site powered by Payload CMS
 
-This is an Astro website that is meant to be paired with the accompanying Payload CMS: https://github.com/proto-cool/proto.cool-payload-cms
+This is an Astro website built with Tailwind V4 that is meant to be paired with this accompanying Payload CMS repository: https://github.com/proto-cool/proto.cool-payload-cms
 
 Together, they both provide a comprehensive blog publishing workflow with Payload CMS on the backend that allows you to author content for the blog without writing a line of code, while leveraging the fully static benefits of Astro.
 
 For the developers, both the Astro frontend and Payload backend are fully open-source, and both basically as customizable as you see fit (and within your comfort level, of course).
 
-I host the site at https://proto.cool with these repositories, but the content is safe in my Payload CMS instance (and backed up!)
+I personally host the site at https://proto.cool with these repositories, but the content is safe in my Payload CMS instance (and backed up!)
 
 ## 🚀 Project Structure
 
@@ -49,4 +49,7 @@ Remaining UI icons are from Heroicons: https://heroicons.com/
 Webfonts were licensed from Fontspring: https://www.fontspring.com/
 ... except for Public Sans: https://github.com/uswds/public-sans
 
-Made with love using Tailwind CSS: https://v3.tailwindcss.com/
+Made with love using:
+    Astro: https://astro.build/
+    Payload CMS: https://payloadcms.com/
+    Tailwind CSS: https://tailwindcss.com/
