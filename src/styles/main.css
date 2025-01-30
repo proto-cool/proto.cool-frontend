@@ -65,6 +65,19 @@
 /* control dark mode with a data-theme attribute */
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+/* Utility classes */
+@utility text-glow {
+    text-shadow: 0 0 3px currentColor;
+}
+
+@utility text-glow-md {
+    text-shadow: 0 0 5px currentColor;
+}
+
+@utility text-glow-lg {
+    text-shadow: 0 0 8px currentColor;
+}
+
 /* https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer */
 @layer base {
     :root[data-theme="light"] {
@@ -138,26 +151,10 @@
     }
 
     .container {
-        @apply mx-auto max-w-5xl px-4;
+        @apply mx-auto px-4;
     }
 
-    /* used for newsletter, and contact form inputs */
-    .form__input {
-        @apply w-full rounded-md bg-theme-bg-primary px-2.5 py-1.5 border-2 border-base-600 transition-colors;
-        @apply focus:ring-0 focus-visible:border-theme-color-primary;
-    }
 
-    .text-glow {
-        text-shadow: 0 0 3px currentColor;
-    }
-
-    .text-glow-md {
-        text-shadow: 0 0 5px currentColor;
-    }
-
-    .text-glow-lg {
-        text-shadow: 0 0 8px currentColor;
-    }
 
     :root[data-theme="dark"] .text-gradient {
         @apply bg-gradient-to-tr from-green-400 to-base-100 text-transparent bg-clip-text;

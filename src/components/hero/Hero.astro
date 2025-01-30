@@ -39,9 +39,9 @@ import siteConfig from "../../site.config";
         {
             SiteConfig.authorPhoto?.url ? (
                 <Image
-                    class="aspect-square rounded-2xl shadow-md"
-                    width={240}
-                    height={240}
+                    class="aspect-square rounded-2xl shadow-md size-[240px]"
+                    width={512}
+                    height={512}
                     src={getImageSrc(SiteConfig.authorPhoto.url)}
                     alt={`$${SiteConfig.authorName} profile picture`}
                     data-onview="fade-zoom"

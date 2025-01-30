@@ -37,14 +37,14 @@ const hashtagIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
             <div class="grid grid-cols-4 gap-4 mb-4">
                 <a
                     href={`/blog/post/${post.slug}/`}
-                    class="col-span-4 col-start-1 lg:col-span-3 lg:col-start-2 rounded-xl opacity-95 dark:opacity-90 hover:opacity-100 aspect-video object-cover  transition-opacity duration-300 group overflow-hidden"
+                    class="col-span-4 col-start-1 lg:col-span-3 lg:col-start-2 rounded-xl opacity-95 dark:opacity-90 hover:opacity-100 aspect-video object-cover transition-opacity duration-300 group overflow-hidden"
                     data-astro-prefetch
                 >
                     <Image
                         src={previewImageUrl}
                         alt={`Cover for ${title}`}
-                        height={900}
-                        width={1600}
+                        height={432}
+                        width={768}
                         quality="high"
                         loading="eager"
                         class="w-full h-auto group-hover:scale-[1.025] transition-transform duration-300"
@@ -114,7 +114,7 @@ const hashtagIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
-                        class="inline-block size-4 transition-[transform] group-hover:translate-x-1"
+                        class="inline-block size-4 transition-transform group-hover:translate-x-1"
                     >
                         <path
                             stroke-linecap="round"
