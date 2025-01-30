@@ -1,0 +1,11 @@
+---
+import renderNode, { getSlugFromNode } from "@lib/blog/lexicalUtils";
+import Text from "./Text.astro";
+const { tag, children } = Astro.props;
+
+let Component = tag;
+---
+
+<Component class:list={["font-cool", "lowercase"]} id={getSlugFromNode(children)}>
+    {children.map((child) => <Text content={renderNode(child)} />)}
+</Component>

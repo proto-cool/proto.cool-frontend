@@ -1,0 +1,15 @@
+---
+import SiteConfig from "@/site.config";
+import SocialLinks from "../social/SocialLinks.astro";
+---
+
+<footer class="mx-auto container px-6 lg:px-8 text-theme-fg-secondary">
+    <div
+        class="border-t-2 border-theme-bg-tertiary py-12 flex flex-col items-center md:flex-row md:justify-between"
+    >
+        <SocialLinks className="md:order-2" />
+        <p class="mt-8 text-center text-sm/6 text-gray-400 md:order-1 md:mt-0">
+            &copy; 2024 {SiteConfig.name}. All rights reserved.
+        </p>
+    </div>
+</footer>

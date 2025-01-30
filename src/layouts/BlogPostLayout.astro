@@ -1,0 +1,176 @@
+---
+import SiteConfig from "@/site.config";
+import { Image } from "astro:assets";
+
+// main layout
+import BaseLayout from "./BaseLayout.astro";
+
+// components
+import Tag from "@components/blog/tags/Tag.astro";
+import Button from "@components/core/Button.astro";
+import TableOfContents from "@components/blog/TableOfContents.astro";
+
+// style import
+import "@/styles/blog.css";
+
+// utils
+import type { Media, Post } from "@lib/payload/payload-types";
+import { formatDate } from "@lib/textUtils";
+import { getImageSrc } from "@lib/payload/utils";
+import { extractHeadings } from "@lib/blog/lexicalUtils";
+
+interface Props {
+    post: Post;
+}
+
+const { post } = Astro.props as Props;
+const { title, subtitle, createdAt, updatedAt, heroImage, tag } = post;
+
+let hasHeroImage = heroImage && (heroImage as Media).url !== "";
+let heroImageSrc: string = "";
+let heroImageMedia: Media | undefined = undefined;
+
+if (hasHeroImage) {
+    heroImageMedia = heroImage as Media;
+    heroImageSrc = getImageSrc(heroImageMedia.url as string);
+}
+
+const headings = extractHeadings(post.content.root);
+
+const calendarIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 mr-1">
+  <path d="M12.75 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM7.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM8.25 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM9.75 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM10.5 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM12.75 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM14.25 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" />
+  <path fill-rule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clip-rule="evenodd" />
+</svg>`;
+
+const clockIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 mr-1">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>`;
+---
+
+<BaseLayout type="post" title={`${title} — ${SiteConfig.name}`} post={post}>
+    <article id="blog-post">
+        <!-- Blog post info -->
+        <div class="flex w-full flex-col items-center">
+            <div
+                class="mx-auto w-full lg:grid lg:grid-cols-6 flex flex-col gap-y-8 items-center lg:items-end"
+            >
+                <div class="w-full text-center col-span-4 col-start-2">
+                    <!-- title -->
+                    <h1 class="font-bold lowercase !text-balance">{title}</h1>
+
+                    <!-- subtitle -->
+                    {
+                        subtitle && (
+                            <h3 class="!text-balance lowercase mt-4 opacity-85">{subtitle}</h3>
+                        )
+                    }
+                </div>
+
+                <!-- metadata -->
+                <div
+                    class="flex flex-row lg:flex-col items-start order-first gap-x-4 gap-y-2 lg:gap-x-2 justify-center border-l-0 lg:border-l-2 border-theme-bg-tertiary pl-0 lg:pl-4 flex-wrap"
+                >
+                    <!--date-->
+                    <div class="flex items-center lg:-mt-2 description">
+                        <Fragment set:html={calendarIcon} />
+                        <time datetime={createdAt} class="whitespace-nowrap ml-1">
+                            {formatDate(createdAt)}
+                        </time>
+                    </div>
+
+                    <!--reading time-->
+                    <div class="flex items-center description">
+                        <Fragment set:html={clockIcon} />
+                        <span class="whitespace-nowrap ml-1">
+                            {post.readTime}
+                        </span>
+                    </div>
+
+                    <!-- tag -->
+                    <Tag tag={tag} />
+                </div>
+
+                <!-- author -->
+                <div
+                    class="mx-auto lg:mx-0 flex items-center justify-self-end order-last description"
+                >
+                    by
+                    <figure class="size-6 overflow-hidden rounded-full mx-2">
+                        <Image
+                            src={getImageSrc(SiteConfig.authorPhoto!.url!)}
+                            alt=`${SiteConfig.authorName} avatar`
+                            width={100}
+                            height={100}
+                            quality="high"
+                            class="object-cover"
+                            loading="eager"
+                        />
+                    </figure>
+                    <span class="whitespace-nowrap">{SiteConfig.authorName}</span>
+                </div>
+            </div>
+
+            <!-- blog post main image -->
+            {
+                hasHeroImage && (
+                    <div class="mt-12 overflow-hidden">
+                        <Image
+                            src={heroImageSrc}
+                            alt={heroImageMedia?.alt ?? null}
+                            width={heroImageMedia?.width ?? 1200}
+                            height={heroImageMedia?.height ?? 800}
+                            class="object-cover rounded-2xl"
+                            loading="eager"
+                        />
+                    </div>
+                )
+            }
+        </div>
+
+        <!-- article content -->
+        <div class:list={["w-full", hasHeroImage ? "mt-12" : "mt-24"]}>
+            <div class="mx-auto max-w-2xl gap-8 lg:grid lg:max-w-none lg:grid-cols-3">
+                <!--Content-->
+                <div
+                    class:list={[
+                        "text-base-content text-base",
+                        headings.length !== 0 ? "lg:col-span-2 lg:col-start-1" : "lg:col-span-3",
+                    ]}
+                >
+                    <!--{updatedAt && (-->
+                    <!--        <div class="mb-6 italic">-->
+                    <!--            <time datetime={updated.toISOString()}>-->
+                    <!--                Updated: {formatDate(updated)}-->
+                    <!--            </time>-->
+                    <!--        </div>)}-->
+                    <section id="blog-post-content" class="mx-auto flex flex-col gap-4">
+                        <slot />
+                    </section>
+
+                    <!-- button to go back to all posts -->
+                    <div class="mt-8 flex">
+                        <Button variant="secondary" href="/blog/1/" arrow="left">
+                            back to all blog posts
+                        </Button>
+                    </div>
+                </div>
+
+                <!--Table of Contents sidebar-->
+                {
+                    headings.length != 0 && (
+                        <aside class="hidden lg:block">
+                            <div class="sticky top-32">
+                                <TableOfContents headings={headings} levels={3} />
+                            </div>
+                        </aside>
+                    )
+                }
+            </div>
+        </div>
+    </article>
+</BaseLayout>
+
+<script>
+    import { initCodeBlocks } from "@lib/blog/blockUtils";
+    initCodeBlocks();
+</script>

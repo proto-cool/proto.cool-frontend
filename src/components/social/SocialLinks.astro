@@ -1,0 +1,17 @@
+---
+// components
+import SocialIcon from "@components/social/SocialIcon.astro";
+
+// data
+import SiteConfig from "@/site.config";
+
+const { className, ...rest } = Astro.props;
+---
+
+<div class:list={["flex gap-3 bg-theme-bg-secondary rounded-full px-3 py-2", className]} {...rest}>
+    {
+        SiteConfig.socialLinks.map((social) => (
+            <SocialIcon href={social.link} social={social.platform} />
+        ))
+    }
+</div>

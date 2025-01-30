@@ -1,0 +1,78 @@
+---
+import { ClientRouter } from "astro:transitions";
+import SiteConfig, { type ContentType } from "@/site.config";
+import SEO from "@layouts/components/SEO.astro";
+import type { Post } from "../../lib/payload/payload-types";
+
+export interface HeadProps {
+    type?: ContentType;
+    title: string;
+    description?: string;
+    post?: Post;
+    noindex?: boolean;
+}
+
+const {
+    type = "base",
+    title,
+    description = undefined,
+    post,
+    noindex = false,
+} = Astro.props as HeadProps;
+
+const isProd = import.meta.env.PROD;
+---
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
+
+    <title>{title}</title>
+
+    <!-- Favicons. Generated from https://realfavicongenerator.net/ -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="/favicons/site.webmanifest" />
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#6DD40c" />
+    <link rel="shortcut icon" href="/favicons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#00a300" />
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
+    <meta name="theme-color" content="#6DD40C" />
+
+    <!-- other -->
+    <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    {SiteConfig.codeInjection && isProd && <Fragment set:html={SiteConfig.codeInjection} />}
+
+    <SEO type={type} title={title} post={post} noindex={noindex} description={description} />
+
+    {SiteConfig.useViewTransitions && <ClientRouter fallback="none" />}
+
+    <script is:inline>
+        const getTheme = () => {
+            if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+                return localStorage.getItem("theme") ?? "dark";
+            }
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                return "dark";
+            }
+            return "light";
+        };
+
+        window.getTheme = getTheme;
+
+        (() => {
+            const theme = getTheme();
+
+            if (theme === "light") {
+                document.documentElement.classList.toggle("dark", false);
+            } else {
+                document.documentElement.classList.toggle("dark", true);
+            }
+
+            window.localStorage.setItem("theme", theme);
+        })();
+    </script>
+</head>

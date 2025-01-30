@@ -1,0 +1,134 @@
+/* base layer imports */
+@import "fonts.css" layer(base);
+
+/* component layer imports */
+@import "buttons.css" layer(components);
+
+/* utilities layer imports */
+@import "animations.css" layer(utilities);
+
+/* base Tailwind imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer */
+@layer base {
+    :root:not(.dark) {
+        --color-bg-primary: theme("colors.base.100");
+        --color-bg-secondary: theme("colors.base.200");
+        --color-bg-tertiary: theme("colors.base.300");
+        --color-fg-primary: theme("colors.base.700");
+        --color-fg-secondary: theme("colors.base.500");
+        --color-fg-tertiary: theme("colors.base.600");
+        --color-primary: theme("colors.green.600");
+        --color-secondary: theme("colors.green.700");
+        --color-tertiary: theme("colors.green.500");
+    }
+
+    :root.dark {
+        --color-bg-primary: theme("colors.base.900");
+        --color-bg-secondary: theme("colors.base.800");
+        --color-bg-tertiary: theme("colors.base.700");
+        --color-fg-primary: theme("colors.base.200");
+        --color-fg-secondary: theme("colors.base.400");
+        --color-fg-tertiary: theme("colors.base.300");
+        --color-primary: theme("colors.green.500");
+        --color-secondary: theme("colors.green.600");
+        --color-tertiary: theme("colors.green.400");
+    }
+
+    :root {
+        @apply font-sans text-lg leading-[1.8rem];
+        @apply text-theme-fg-primary bg-theme-bg-primary;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply relative;
+    }
+
+    body * {
+        @apply transition-colors transition-shadow duration-200;
+    }
+}
+
+/*  things in the components layer can be overriden with utility classes.
+    Useful for custom styles on third-party components, and things like
+    btn, card, badge, etc  */
+@layer components {
+    h1 {
+        @apply text-4xl font-medium sm:text-5xl text-balance;
+    }
+
+    h2 {
+        @apply text-3xl font-medium sm:text-4xl text-balance;
+    }
+
+    h3 {
+        @apply text-2xl font-medium sm:text-2xl text-balance;
+    }
+
+    h4 {
+        @apply text-xl font-medium sm:text-lg text-balance;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        @apply scroll-m-32;
+    }
+
+    .description {
+        @apply text-theme-fg-secondary text-pretty;
+    }
+
+    .container {
+        @apply mx-auto max-w-5xl px-4;
+    }
+
+    /* used for newsletter, and contact form inputs */
+    .form__input {
+        @apply w-full rounded-md bg-theme-bg-primary px-2.5 py-1.5 border-2 border-base-600 transition-colors;
+        @apply focus:ring-0 focus-visible:border-theme-color-primary;
+    }
+
+    .text-glow {
+        text-shadow: 0 0 3px currentColor;
+    }
+
+    .text-glow-md {
+        text-shadow: 0 0 5px currentColor;
+    }
+
+    .text-glow-lg {
+        text-shadow: 0 0 8px currentColor;
+    }
+
+    :root.dark .text-gradient {
+        @apply bg-gradient-to-tr from-green-400 to-base-100 text-transparent bg-clip-text;
+    }
+
+    .text-gradient {
+        @apply bg-gradient-to-bl from-green-500 to-base-700 text-transparent bg-clip-text;
+    }
+
+    .social-links svg {
+        fill: currentColor;
+    }
+}
+
+@layer utilities {
+    .primary-focus {
+        @apply outline-none focus-visible:outline-theme-color-primary;
+    }
+
+    .underline-hover {
+        @apply bg-gradient-to-r from-theme-color-primary to-theme-color-primary bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-[background-size] duration-300 hover:bg-[length:100%_2px];
+    }
+
+    .underline-hover-group {
+        @apply bg-gradient-to-r from-theme-color-primary to-theme-color-primary bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-[background-size] duration-300 group-hover:bg-[length:100%_2px];
+    }
+}

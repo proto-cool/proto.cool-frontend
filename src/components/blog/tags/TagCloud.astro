@@ -1,0 +1,20 @@
+---
+// components
+import Tag from "@components/blog/tags/Tag.astro";
+
+// utils
+import { getAllTags } from "@lib/payload/utils";
+
+const tags = await getAllTags();
+
+interface Props {
+    showCount?: boolean;
+    rest?: any;
+}
+
+const { showCount = false, ...rest } = Astro.props as Props;
+---
+
+<div class="flex flex-wrap gap-3" {...rest}>
+    {tags.docs.map((tag) => <Tag {tag} {showCount} showActive class="border-none !px-1" />)}
+</div>

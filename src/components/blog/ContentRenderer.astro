@@ -1,0 +1,46 @@
+---
+import type { Node } from "@lib/types";
+import { getImageSrc } from "@lib/payload/utils";
+
+import Heading from "./content/typography/Heading.astro";
+import Paragraph from "./content/typography/Paragraph.astro";
+import Blockquote from "./content/typography/Blockquote.astro";
+import List from "./content/lists/List.astro";
+import CodeBlock from "./content/blocks/CodeBlock.astro";
+import ImageBlock from "./content/blocks/ImageBlock.astro";
+import Link from "./content/typography/Link.astro";
+
+const { node } = Astro.props as { node: Node };
+---
+
+{node.type === "root" && node.children.map((child: Node) => <Astro.self node={child} />)}
+
+{node.type === "paragraph" && <Paragraph children={node.children ?? []} />}
+
+{node.type === "heading" && <Heading tag={node.tag} children={node.children ?? []} />}
+
+{node.type === "list" && <List tag={node.tag} children={node.children ?? []} />}
+
+{node.type === "quote" && <Blockquote children={node.children ?? []} />}
+
+{node.type === "link" && <Link fields={node.fields} children={node.children ?? []} />}
+
+{
+    node.type === "block" && node.fields?.blockType === "code" && (
+        <CodeBlock
+            code={node.fields.code}
+            language={node.fields.language}
+            title={node.fields.blockName}
+        />
+    )
+}
+
+{
+    node.type === "block" && node.fields?.blockType === "image" && (
+        <ImageBlock
+            image={node.fields.image}
+            caption={node.fields.blockName}
+            blockId={node.fields.id}
+        />
+    )
+}

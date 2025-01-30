@@ -1,0 +1,29 @@
+.button {
+    @apply flex items-center justify-center px-4 py-1.5 font-medium transition-colors duration-200 rounded-md;
+    @apply focus:outline-none focus:ring-offset-base-900;
+    @apply disabled:pointer-events-none;
+}
+
+.button.primary {
+    @apply relative bg-theme-color-primary text-base-800 font-cool;
+    @apply hover:bg-theme-color-tertiary hover:text-green-950;
+    @apply focus-visible:ring-2 focus-visible:bg-theme-color-primary focus-visible:ring-offset-2;
+}
+
+.button.secondary {
+    @apply border-2 border-theme-bg-tertiary bg-transparent text-theme-fg-secondary;
+    @apply hover:border-theme-color-tertiary hover:text-theme-fg-tertiary;
+    @apply focus-visible:ring-2 focus-visible:ring-theme-color-tertiary focus-visible:ring-offset-2;
+}
+
+.button.ghost {
+    @apply bg-transparent;
+    @apply hover:text-theme-color-primary;
+    @apply focus-visible:ring-2 focus-visible:ring-theme-color-primary focus-visible:ring-offset-2;
+}
+
+.button.disabled {
+    @apply bg-theme-bg-secondary text-theme-fg-secondary;
+    @apply hover:cursor-not-allowed;
+    @apply focus-visible:ring-0;
+}

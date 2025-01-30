@@ -1,0 +1,83 @@
+---
+import NavLink from "@components/nav/NavLink.astro";
+import Logo from "@components/logo/Logo.astro";
+import SiteConfig from "@/site.config";
+import ThemeButton from "@components/nav/buttons/ThemeButton.astro";
+import NavMobile from "./NavMobile.astro";
+---
+
+<style>
+    #navigation {
+        @apply fixed left-0 top-0 z-40 flex w-full backdrop-blur;
+
+        @apply h-[7rem];
+        --nav-mask-height: 6rem;
+        /* Mask for gradient effect */
+        mask-image: linear-gradient(
+            rgba(0, 0, 0, 1) var(--nav-mask-height),
+            rgba(0, 0, 0, 1) var(--nav-mask-height),
+            rgba(0, 0, 0, 0) 100% /* Taper to transparent */
+        );
+    }
+
+    #navigation::before {
+        content: "";
+        @apply absolute inset-0 flex w-full h-full z-10 opacity-90;
+        /* Background and filter styles */
+
+        background-color: var(--color-bg-primary);
+
+        /* Mask for gradient effect */
+        mask-image: linear-gradient(
+            rgba(0, 0, 0, 1) var(--nav-mask-height),
+            rgba(0, 0, 0, 0) 100% /* Taper to transparent */
+        );
+    }
+
+    #navigation_background {
+        @apply absolute inset-0 z-[5] bg-transparent;
+        /* Background and filter styles */
+
+        /* Radial gradient background */
+        background-image: radial-gradient(var(--color-bg-primary) 1px, transparent 1px);
+
+        /* Background size */
+        background-size: 3px 3px;
+    }
+</style>
+
+<header>
+    <nav id="navigation" aria-label="Global">
+        <div class="mx-auto h-8 flex container items-center justify-between mt-8 px-6 lg:px-8 z-20">
+            <Logo />
+            <div class="flex items-center gap-x-8 lg:hidden">
+                <ThemeButton />
+                <button
+                    id="navigation-mobile-open"
+                    type="button"
+                    class="inline-flex items-center justify-center rounded-md text-theme-fg-primary w-8 h-8"
+                >
+                    <span class="sr-only">Open main menu</span>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="size-8"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-12">
+                {SiteConfig.navLinks.map((link) => <NavLink text={link.text} href={link.href} />)}
+                <ThemeButton />
+            </div>
+        </div>
+        <div id="navigation_background"></div>
+    </nav>
+
+    <NavMobile />
+</header>

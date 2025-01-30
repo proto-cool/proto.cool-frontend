@@ -1,0 +1,18 @@
+---
+import renderNode from "@lib/blog/lexicalUtils";
+import Text from "./Text.astro";
+import Link from "./Link.astro";
+const { children } = Astro.props;
+---
+
+<p>
+    {
+        children.map((child) =>
+            child.type === "link" ? (
+                <Link fields={child.fields} children={child.children} />
+            ) : (
+                <Text content={renderNode(child)} />
+            ),
+        )
+    }
+</p>

@@ -1,0 +1,34 @@
+/* start animated items visibly hidden. Once animation has started, "onview-animate" class is added to make them visible for the animation to play */
+
+/* all animations */
+.use-animations [data-onview] {
+    @apply pointer-events-none;
+
+    &.onview-animate {
+        @apply pointer-events-auto;
+    }
+}
+
+/* fade animations */
+.use-animations [data-onview^="fade"][data-onview^="fade"] {
+    @apply opacity-0;
+}
+
+/* zoom animations */
+.use-animations [data-onview^="zoom"][data-onview^="zoom"] {
+    @apply opacity-0;
+}
+
+/* slide animations */
+.use-animations [data-onview^="slide"][data-onview^="slide"] {
+    @apply invisible;
+
+    &.onview-animate {
+        @apply visible;
+    }
+}
+
+/* flip animations */
+.use-animations [data-onview^="flip"][data-onview^="flip"] {
+    backface-visibility: hidden;
+}

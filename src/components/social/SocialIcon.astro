@@ -1,0 +1,54 @@
+---
+import * as icons from "simple-icons";
+import { type SocialLinkProps } from "@/site.config";
+
+interface Props {
+    social: SocialLinkProps["platform"]; // used for aria label
+    href: string;
+    text?: string;
+    class?: string;
+}
+
+const { social, href, text = "", class: className } = Astro.props as Props;
+
+let icon: string;
+let iconClasses: string = "p-0.5";
+switch (social) {
+    case "github":
+        icon = icons.siGithub.svg;
+        break;
+    case "bluesky":
+        icon = icons.siBluesky.svg;
+        break;
+    case "mastodon":
+        icon = icons.siMastodon.svg;
+        break;
+    case "discord":
+        icon = icons.siDiscord.svg;
+        break;
+    case "email":
+        iconClasses = "";
+        // from Heroicons https://heroicons.com/solid
+        icon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path fill-rule="evenodd" d="M17.834 6.166a8.25 8.25 0 1 0 0 11.668.75.75 0 0 1 1.06 1.06c-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788 3.807-3.808 9.98-3.808 13.788 0A9.722 9.722 0 0 1 21.75 12c0 .975-.296 1.887-.809 2.571-.514.685-1.28 1.179-2.191 1.179-.904 0-1.666-.487-2.18-1.164a5.25 5.25 0 1 1-.82-6.26V8.25a.75.75 0 0 1 1.5 0V12c0 .682.208 1.27.509 1.671.3.401.659.579.991.579.332 0 .69-.178.991-.579.3-.4.509-.99.509-1.671a8.222 8.222 0 0 0-2.416-5.834ZM15.75 12a3.75 3.75 0 1 0-7.5 0 3.75 3.75 0 0 0 7.5 0Z" clip-rule="evenodd" />
+        </svg>`;
+        break;
+    default:
+        icon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+</svg>
+`;
+        break;
+}
+---
+
+<a
+    aria-label={social}
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    class=`social-links text-xl text-theme-fg-secondary hover:text-theme-color-primary transition-colors ${className}`
+>
+    <p class="sr-only">{social}</p>
+    <span set:html={icon} class:list={["size-6 block", iconClasses]} />
+</a>

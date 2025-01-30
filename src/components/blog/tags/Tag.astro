@@ -1,0 +1,45 @@
+---
+import type { Tag } from "@lib/payload/payload-types";
+
+interface Props {
+    tag: Tag;
+    showCount?: boolean;
+    showActive?: boolean;
+    class?: string;
+}
+
+const { tag, class: className, showCount, showActive = false } = Astro.props as Props;
+
+let isActive = showActive && Astro.url.pathname.startsWith(`/blog/tags/${tag.slug}`);
+
+const baseClasses = [
+    "group",
+    "inline-block",
+    "rounded-md",
+    "bg-theme-bg-secondary",
+    "hover:bg-theme-color-primary",
+    "hover:text-green-950",
+    "text-theme-fg-secondary",
+    "text-sm font-mono",
+    "px-2",
+    "py-0.5",
+    "transition-colors",
+    "lowercase",
+    "whitespace-nowrap",
+];
+
+const activeClasses = ["ring-2", "ring-theme-color-primary"];
+---
+
+<a
+    href={`/blog/tags/${tag.slug}/1/`}
+    class:list={[...baseClasses, ...(isActive ? activeClasses : []), className]}
+    data-astro-prefetch
+>
+    #{tag.text}
+    {
+        showCount && (
+            <span class="description text-xsgroup-hover:text-base-700">({tag.postCount})</span>
+        )
+    }
+</a>

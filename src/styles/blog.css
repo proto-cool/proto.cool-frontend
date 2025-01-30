@@ -1,0 +1,67 @@
+#blog-post-content p > code {
+    @apply text-theme-fg-tertiary bg-theme-bg-tertiary px-1 py-0.5 align-middle text-sm rounded;
+}
+
+#blog-post-content ol {
+    @apply list-decimal ml-8 flex-col gap-2;
+}
+
+#blog-post-content ul {
+    @apply list-disc ml-8 flex-col gap-2;
+}
+
+#blog-post-content li::marker {
+    @apply text-theme-fg-tertiary;
+}
+
+#blog-post-content mark {
+    @apply bg-theme-color-primary;
+}
+
+#blog-post .toc-current {
+    @apply text-theme-color-primary hover:text-theme-color-tertiary;
+}
+
+#blog-post-content h1:not(:first-child),
+#blog-post-content h2:not(:first-child),
+#blog-post-content h3:not(:first-child),
+#blog-post-content h4:not(:first-child) {
+    @apply mt-8;
+}
+
+html.dark .shiki,
+html.dark .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    /* Optional, if you also want font styles */
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+#blog-post-content .code-block {
+    @apply bg-theme-bg-tertiary rounded-lg p-2;
+}
+
+#blog-post-content .code-block pre {
+    @apply px-3 py-2 rounded-lg text-sm;
+}
+
+#blog-post-content .shiki code {
+    counter-reset: step;
+    counter-increment: step 0;
+}
+
+#blog-post-content .shiki code .line::before {
+    content: counter(step);
+    counter-increment: step;
+    @apply w-6 mr-4 text-right text-theme-fg-secondary inline-block opacity-50;
+}
+
+#blog-post-content pre.shiki {
+    @apply overflow-x-auto;
+}
+
+#blog-post-content pre.shiki code {
+    @apply block;
+}

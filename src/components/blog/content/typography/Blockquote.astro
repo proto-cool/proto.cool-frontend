@@ -1,0 +1,9 @@
+---
+import renderNode from "../../../../lib/blog/lexicalUtils";
+import Text from "./Text.astro";
+const { children } = Astro.props;
+---
+
+<blockquote>
+    {children.map((child) => <Text content={renderNode(child)} />)}
+</blockquote>

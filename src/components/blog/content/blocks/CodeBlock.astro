@@ -1,0 +1,24 @@
+---
+import generateCodeBlock from "@lib/codeHighlighting";
+
+interface Props {
+    code: string;
+    title?: string;
+    language: string;
+}
+
+const { code, title, language } = Astro.props;
+
+const highlightedCode = generateCodeBlock(code, language);
+---
+
+<div class="relative code-block" data-code={code}>
+    <!-- Optional title -->
+    <div class="flex justify-between mb-2 px-2">
+        <span class="text-sm text-theme-fg-secondary">{title ? title : `${language} code`}</span>
+        <button class="text-xs text-theme-fg-primary opacity-60 hover:opacity-100">copy</button>
+    </div>
+
+    <!-- Code block -->
+    <Fragment set:html={highlightedCode} />
+</div>
