@@ -1,10 +1,12 @@
+import SiteConfig from "@/site.config.ts";
+
 /**
  * * returns a nicely formatted string based on the input date
  * @param date - the date to format
  */
 export function formatDate(date: string | number | Date): string {
     return new Date(date).toLocaleDateString("en-US", {
-        timeZone: "UTC",
+        timeZone: SiteConfig.timezone,
         year: "numeric",
         month: "numeric",
         day: "numeric",

@@ -453,7 +453,45 @@ export interface Site {
           }[]
         | null;
     "code-injection"?: string | null;
-    "site-settings"?: {
+    "site-settings": {
+        timezone:
+            | "Africa/Abidjan"
+            | "Africa/Cairo"
+            | "Africa/Nairobi"
+            | "America/New_York"
+            | "America/Toronto"
+            | "America/Mexico_City"
+            | "America/Chicago"
+            | "America/Denver"
+            | "America/Phoenix"
+            | "America/Los_Angeles"
+            | "America/Anchorage"
+            | "America/Adak"
+            | "Pacific/Honolulu"
+            | "Pacific/Midway"
+            | "Pacific/Kiritimati"
+            | "Asia/Tokyo"
+            | "Asia/Shanghai"
+            | "Asia/Bangkok"
+            | "Asia/Dhaka"
+            | "Asia/Kolkata"
+            | "Asia/Tehran"
+            | "Asia/Dubai"
+            | "Asia/Kabul"
+            | "Europe/London"
+            | "Europe/Dublin"
+            | "Europe/Paris"
+            | "Europe/Berlin"
+            | "Europe/Rome"
+            | "Europe/Madrid"
+            | "Europe/Moscow"
+            | "Australia/Sydney"
+            | "Australia/Melbourne"
+            | "Australia/Brisbane"
+            | "Australia/Adelaide"
+            | "Australia/Perth"
+            | "Antarctica/Palmer"
+            | "Antarctica/McMurdo";
         "enable-builds"?: boolean | null;
         "use-view-transitions"?: boolean | null;
         "use-animations"?: boolean | null;
@@ -490,6 +528,7 @@ export interface SiteSelect<T extends boolean = true> {
     "site-settings"?:
         | T
         | {
+              timezone?: T;
               "enable-builds"?: T;
               "use-view-transitions"?: T;
               "use-animations"?: T;

@@ -48,6 +48,7 @@ export interface SiteConfigProps {
     socialLinks: SocialLinkProps[];
     authorName: string;
     authorPhoto: Media | null;
+    timezone: string;
     useViewTransitions?: boolean;
     useAnimations?: boolean;
     navLinks: NavLink[];
@@ -87,6 +88,9 @@ const SiteConfig: SiteConfigProps = {
 
     // used for analytics, etc
     codeInjection: payloadSiteSettings["code-injection"],
+
+    // Used to calculate the date correctly for the site
+    timezone: payloadSiteSettings["site-settings"].timezone,
 };
 
 export default SiteConfig;
