@@ -44,8 +44,6 @@ const isProd = import.meta.env.PROD;
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    {SiteConfig.codeInjection && isProd && <Fragment set:html={SiteConfig.codeInjection} />}
-
     <SEO type={type} title={title} post={post} noindex={noindex} description={description} />
 
     {SiteConfig.useViewTransitions && <ClientRouter fallback="none" />}
@@ -75,4 +73,6 @@ const isProd = import.meta.env.PROD;
             window.localStorage.setItem("theme", theme);
         })();
     </script>
+
+    {SiteConfig.codeInjection && isProd && <Fragment set:html={SiteConfig.codeInjection} />}
 </head>
