@@ -80,6 +80,8 @@ const {
             };
 
             document.addEventListener("astro:after-swap", function () {
+                const element = document.documentElement;
+
                 element.setAttribute(
                     "data-theme",
                     window.getTheme() === "light" ? "light" : "dark",
