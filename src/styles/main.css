@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
+@import "./animations.css";
+
 /* base layer imports */
 @import "./fonts.css" layer(base);
 
 /* component layer imports */
 @import "./buttons.css" layer(components);
 
-/* utilities layer imports */
-@import "./animations.css" layer(utilities);
-
+/* tailwind V4 configuration */
 @theme {
     /* green colors */
     --color-green-50:  rgb(244,253,232);
@@ -78,7 +78,11 @@
     text-shadow: 0 0 8px currentColor;
 }
 
-/* https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer */
+@utility container {
+    @apply mx-auto px-6 lg:px-8;
+}
+
+/* Core theme styles */
 @layer base {
     :root[data-theme="light"] {
         --color-bg-primary: var(--color-base-100);
@@ -119,9 +123,7 @@
     }
 }
 
-/*  things in the components layer can be overriden with utility classes.
-    Useful for custom styles on third-party components, and things like
-    btn, card, badge, etc  */
+/* Component style declarations */
 @layer components {
     h1 {
         @apply text-4xl font-medium sm:text-5xl text-balance;
@@ -150,12 +152,6 @@
         @apply text-theme-fg-secondary text-pretty;
     }
 
-    .container {
-        @apply mx-auto px-4;
-    }
-
-
-
     :root[data-theme="dark"] .text-gradient {
         @apply bg-gradient-to-tr from-green-400 to-base-100 text-transparent bg-clip-text;
     }
@@ -166,12 +162,6 @@
 
     .social-links svg {
         fill: currentColor;
-    }
-}
-
-@layer utilities {
-    .primary-focus {
-        @apply outline-none focus-visible:outline-theme-color-primary;
     }
 
     .underline-hover {
