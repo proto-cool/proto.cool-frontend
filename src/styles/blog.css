@@ -1,3 +1,5 @@
+@reference "./main.css";
+
 #blog-post-content p > code {
     @apply text-theme-fg-tertiary bg-theme-bg-tertiary px-1 py-0.5 align-middle text-sm rounded;
 }

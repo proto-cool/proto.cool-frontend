@@ -1,41 +1,111 @@
+@import "tailwindcss";
+
+@import "./animations.css";
+
 /* base layer imports */
-@import "fonts.css" layer(base);
+@import "./fonts.css" layer(base);
 
 /* component layer imports */
-@import "buttons.css" layer(components);
+@import "./buttons.css" layer(components);
 
-/* utilities layer imports */
-@import "animations.css" layer(utilities);
+/* tailwind V4 configuration */
+@theme {
+    /* green colors */
+    --color-green-50:  rgb(244,253,232);
+    --color-green-100: rgb(208,246,167);
+    --color-green-200: rgb(173,242,105);
+    --color-green-300: rgb(150,241,59);
+    --color-green-400: rgb(126,241,19);
+    --color-green-500: rgb(109,212,12);
+    --color-green-600: rgb(87,169,10);
+    --color-green-700: rgb(69,134,9);
+    --color-green-800: rgb(55,108,9);
+    --color-green-900: rgb(37,74,7);
+    --color-green-950: rgb(18,37,4);
 
-/* base Tailwind imports */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+     /* base colors */
+    --color-base-50:  rgb(250,250,250);
+    --color-base-100: rgb(244,244,245);
+    --color-base-200: rgb(228,228,231);
+    --color-base-300: rgb(212,212,216);
+    --color-base-400: rgb(161,161,170);
+    --color-base-500: rgb(113,113,122);
+    --color-base-600: rgb(82,82,91);
+    --color-base-700: rgb(63,63,70);
+    --color-base-800: rgb(39,39,42);
+    --color-base-900: rgb(24,24,27);
+    --color-base-950: rgb(9,9,11);
 
-/* https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer */
+    /* theme colors - for theme utility classes */
+    --color-theme-bg-primary: var(--color-bg-primary);
+    --color-theme-bg-secondary: var(--color-bg-secondary);
+    --color-theme-bg-tertiary: var(--color-bg-tertiary);
+    --color-theme-fg-primary: var(--color-fg-primary);
+    --color-theme-fg-secondary: var(--color-fg-secondary);
+    --color-theme-fg-tertiary: var(--color-fg-tertiary);
+    --color-theme-color-primary: var(--color-primary);
+    --color-theme-color-secondary: var(--color-secondary);
+    --color-theme-color-tertiary: var(--color-tertiary);
+
+    /* font declarations */
+    --font-sans: "Public Sans", "Arial", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+    --font-mono: "Monaspace Neon", "monospace";
+    --font-cool: "Chinook", "sans-serif";
+
+    /* breakpoints for responsiveness */
+    --breakpoint-*: initial;
+    --breakpoint-xs: 32rem;
+    --breakpoint-sm: 40rem;
+    --breakpoint-md: 48rem;
+    --breakpoint-lg: 64rem;
+    --breakpoint-xl: 64rem;
+}
+
+/* control dark mode with a data-theme attribute */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/* Utility classes */
+@utility text-glow {
+    text-shadow: 0 0 3px currentColor;
+}
+
+@utility text-glow-md {
+    text-shadow: 0 0 5px currentColor;
+}
+
+@utility text-glow-lg {
+    text-shadow: 0 0 8px currentColor;
+}
+
+@utility container {
+    @apply mx-auto px-6 lg:px-8;
+}
+
+/* Core theme styles */
 @layer base {
-    :root:not(.dark) {
-        --color-bg-primary: theme("colors.base.100");
-        --color-bg-secondary: theme("colors.base.200");
-        --color-bg-tertiary: theme("colors.base.300");
-        --color-fg-primary: theme("colors.base.700");
-        --color-fg-secondary: theme("colors.base.500");
-        --color-fg-tertiary: theme("colors.base.600");
-        --color-primary: theme("colors.green.600");
-        --color-secondary: theme("colors.green.700");
-        --color-tertiary: theme("colors.green.500");
+    :root[data-theme="light"] {
+        --color-bg-primary: var(--color-base-100);
+        --color-bg-secondary: var(--color-base-200);
+        --color-bg-tertiary: var(--color-base-300);
+        --color-fg-primary: var(--color-base-700);
+        --color-fg-secondary: var(--color-base-500);
+        --color-fg-tertiary: var(--color-base-600);
+        --color-primary: var(--color-green-600);
+        --color-secondary: var(--color-green-700);
+        --color-tertiary: var(--color-green-500);
     }
 
-    :root.dark {
-        --color-bg-primary: theme("colors.base.900");
-        --color-bg-secondary: theme("colors.base.800");
-        --color-bg-tertiary: theme("colors.base.700");
-        --color-fg-primary: theme("colors.base.200");
-        --color-fg-secondary: theme("colors.base.400");
-        --color-fg-tertiary: theme("colors.base.300");
-        --color-primary: theme("colors.green.500");
-        --color-secondary: theme("colors.green.600");
-        --color-tertiary: theme("colors.green.400");
+    :root[data-theme="dark"] {
+        --color-bg-primary: var(--color-base-900);
+        --color-bg-secondary: var(--color-base-800);
+        --color-bg-tertiary: var(--color-base-700);
+        --color-fg-primary: var(--color-base-200);
+        --color-fg-secondary: var(--color-base-400);
+        --color-fg-tertiary: var(--color-base-300);
+        --color-primary: var(--color-green-500);
+        --color-secondary: var(--color-green-600);
+        --color-tertiary: var(--color-green-400);
     }
 
     :root {
@@ -53,9 +123,7 @@
     }
 }
 
-/*  things in the components layer can be overriden with utility classes.
-    Useful for custom styles on third-party components, and things like
-    btn, card, badge, etc  */
+/* Component style declarations */
 @layer components {
     h1 {
         @apply text-4xl font-medium sm:text-5xl text-balance;
@@ -84,44 +152,16 @@
         @apply text-theme-fg-secondary text-pretty;
     }
 
-    .container {
-        @apply mx-auto max-w-5xl px-4;
-    }
-
-    /* used for newsletter, and contact form inputs */
-    .form__input {
-        @apply w-full rounded-md bg-theme-bg-primary px-2.5 py-1.5 border-2 border-base-600 transition-colors;
-        @apply focus:ring-0 focus-visible:border-theme-color-primary;
-    }
-
-    .text-glow {
-        text-shadow: 0 0 3px currentColor;
-    }
-
-    .text-glow-md {
-        text-shadow: 0 0 5px currentColor;
-    }
-
-    .text-glow-lg {
-        text-shadow: 0 0 8px currentColor;
-    }
-
-    :root.dark .text-gradient {
+    :root[data-theme="dark"] .text-gradient {
         @apply bg-gradient-to-tr from-green-400 to-base-100 text-transparent bg-clip-text;
     }
 
-    .text-gradient {
+    :root[data-theme="light"] .text-gradient {
         @apply bg-gradient-to-bl from-green-500 to-base-700 text-transparent bg-clip-text;
     }
 
     .social-links svg {
         fill: currentColor;
-    }
-}
-
-@layer utilities {
-    .primary-focus {
-        @apply outline-none focus-visible:outline-theme-color-primary;
     }
 
     .underline-hover {

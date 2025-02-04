@@ -15,6 +15,19 @@ export default function viteS3SyncPublicDirPlugin({
         name: "vite-s3-sync-public-dir",
         apply: "build",
         async buildStart() {
+            // Validate the props
+            if (!s3Bucket) {
+                throw new Error("S3 Bucket not defined");
+            } else if (!s3Endpoint) {
+                throw new Error("S3 Endpoint not defined");
+            } else if (!awsRegion) {
+                throw new Error("AWS Region not defined");
+            } else if (!awsAccessKeyId) {
+                throw new Error("AWS Access Key ID not defined");
+            } else if (!awsSecretAccessKey) {
+                throw new Error("AWS Secret Access Key not defined");
+            }
+
             if (synced) {
                 return;
             }

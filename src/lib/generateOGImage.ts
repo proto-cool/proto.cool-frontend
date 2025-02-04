@@ -1,10 +1,38 @@
 import fs from "node:fs";
-import tailwindConfig from "@lib/tailwind.ts";
 import type { Media } from "@lib/payload/payload-types.ts";
 import satori from "satori";
 import sharp from "sharp";
 import { getImageSrc } from "@lib/payload/utils.ts";
 import SiteConfig from "@/site.config.ts";
+
+const colors = {
+    base: {
+        50: "rgb(250,250,250)",
+        100: "rgb(244,244,245)",
+        200: "rgb(228,228,231)",
+        300: "rgb(212,212,216)",
+        400: "rgb(161,161,170)",
+        500: "rgb(113,113,122)",
+        600: "rgb(82,82,91)",
+        700: "rgb(63,63,70)",
+        800: "rgb(39,39,42)",
+        900: "rgb(24,24,27)",
+        950: "rgb(9,9,11)",
+    },
+    green: {
+        50: "rgb(244,253,232)",
+        100: "rgb(208,246,167)",
+        200: "rgb(173,242,105)",
+        300: "rgb(150,241,59)",
+        400: "rgb(126,241,19)",
+        500: "rgb(109,212,12)",
+        600: "rgb(87,169,10)",
+        700: "rgb(69,134,9)",
+        800: "rgb(55,108,9)",
+        900: "rgb(37,74,7)",
+        950: "rgb(18,37,4)",
+    },
+};
 
 const generateOGImage = async ({
     title,
@@ -40,8 +68,8 @@ const generateOGImage = async ({
             style: {
                 fontFamily: "'Public Sans', sans-serif",
                 fontSize: "24px",
-                backgroundColor: tailwindConfig.theme.colors.base["900"],
-                color: tailwindConfig.theme.colors.base["200"],
+                backgroundColor: colors.base["900"],
+                color: colors.base["200"],
                 padding: "64px",
                 width: "1200px",
                 height: "630px",
@@ -60,7 +88,7 @@ const generateOGImage = async ({
                             fontSize: "77px",
                             marginTop: "-16px",
                             marginBottom: "-8px",
-                            color: tailwindConfig.theme.colors.green["500"],
+                            color: colors.green["500"],
                         },
                         children: SiteConfig.name,
                     },
@@ -74,7 +102,7 @@ const generateOGImage = async ({
                             marginTop: "auto",
                             maxHeight: "314px",
                             marginBottom: "auto",
-                            backgroundColor: tailwindConfig.theme.colors.base["800"],
+                            backgroundColor: colors.base["800"],
                             borderRadius: "36px",
                             display: "flex",
                             flexDirection: "column",
@@ -123,7 +151,7 @@ const generateOGImage = async ({
                                 props: {
                                     style: {
                                         fontSize: "48px",
-                                        color: tailwindConfig.theme.colors.base["400"],
+                                        color: colors.base["400"],
                                         marginTop: "16px",
                                         marginBottom: "4px",
                                         textOverflow: "ellipsis",
@@ -156,8 +184,8 @@ const generateOGImage = async ({
                                         gap: "8px",
                                         borderRadius: "12px",
                                         padding: "8px 16px",
-                                        backgroundColor: tailwindConfig.theme.colors.base["800"],
-                                        color: tailwindConfig.theme.colors.base["400"],
+                                        backgroundColor: colors.base["800"],
+                                        color: colors.base["400"],
                                     },
                                     children: [`#${tag}`],
                                 },
@@ -172,7 +200,7 @@ const generateOGImage = async ({
                                         fontSize: "32px",
                                         gap: "8px",
                                         alignSelf: "flex-end",
-                                        color: tailwindConfig.theme.colors.base["500"],
+                                        color: colors.base["500"],
                                     },
                                     children: [
                                         {

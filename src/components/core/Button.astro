@@ -1,14 +1,8 @@
 ---
-/**
- *  * Notes:
- *  if this is to be a link (<a>), pass an "href" prop
- *  if this is to be a button (<button>), pass a "type" prop
- *  you can pass the arrow prop with "left" or "right" to add an arrow to any button variant
- */
 interface Props {
     type?: "button" | "submit" | "reset" | null | undefined;
     variant?: "primary" | "secondary" | "outline" | "ghost";
-    href?: URL | string; // the href to go to, ex "/posts/"
+    href?: URL | string;
     arrow?: "left" | "right" | "none";
     prefetch?: boolean;
     disabled?: boolean;
@@ -30,14 +24,14 @@ const {
 } = Astro.props as Props;
 
 const chevronsLeftIcon = `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 mr-2 transition-[transform] group-hover:-translate-x-1">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 mr-2 transition-transform group-hover:-translate-x-1">
   <path fill-rule="evenodd" d="M10.72 11.47a.75.75 0 0 0 0 1.06l7.5 7.5a.75.75 0 1 0 1.06-1.06L12.31 12l6.97-6.97a.75.75 0 0 0-1.06-1.06l-7.5 7.5Z" clip-rule="evenodd" />
   <path fill-rule="evenodd" d="M4.72 11.47a.75.75 0 0 0 0 1.06l7.5 7.5a.75.75 0 1 0 1.06-1.06L6.31 12l6.97-6.97a.75.75 0 0 0-1.06-1.06l-7.5 7.5Z" clip-rule="evenodd" />
 </svg>
 `;
 
 const chevronsRightIcon = `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 ml-2 transition-[transform] group-hover:translate-x-1">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 ml-2 transition-transform group-hover:translate-x-1">
   <path fill-rule="evenodd" d="M13.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L11.69 12 4.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
   <path fill-rule="evenodd" d="M19.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06L17.69 12l-6.97-6.97a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
 </svg>

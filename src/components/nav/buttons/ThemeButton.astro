@@ -3,7 +3,7 @@
 ---
 
 <button
-    class="text-base-600 dark:text-base-300 hover:text-theme-color-tertiary hover:text-glow w-6 h-6 flex items-center justify-center"
+    class="text-base-600 dark:text-base-300 hover:text-theme-color-tertiary hover:text-glow w-6 h-6 flex items-center justify-center cursor-pointer"
     data-theme-toggle
 >
     <svg
@@ -36,19 +36,17 @@
         background: none;
     }
 
-    html:not(.dark) button[data-theme-toggle] .dark {
+    :root:not([data-theme="dark"]) button[data-theme-toggle] .dark {
         @apply visible;
     }
-    html:not(.dark) button[data-theme-toggle] .light {
+    :root:not([data-theme="dark"]) button[data-theme-toggle] .light {
         @apply hidden;
     }
 
-    html.dark button[data-theme-toggle] .dark {
+    :root[data-theme="dark"] button[data-theme-toggle] .dark {
         @apply hidden;
     }
-    html.dark button[data-theme-toggle] .light {
+    :root[data-theme="dark"] button[data-theme-toggle] .light {
         @apply visible;
     }
 </style>
-
-<script is:inline></script>
