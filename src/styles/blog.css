@@ -31,8 +31,8 @@
     @apply mt-8;
 }
 
-html.dark .shiki,
-html.dark .shiki span {
+:root[data-theme="dark"] .shiki,
+:root[data-theme="dark"] .shiki span {
     color: var(--shiki-dark) !important;
     background-color: var(--shiki-dark-bg) !important;
     /* Optional, if you also want font styles */

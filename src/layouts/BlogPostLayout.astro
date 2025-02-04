@@ -51,10 +51,8 @@ const clockIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
     <article id="blog-post">
         <!-- Blog post info -->
         <div class="flex w-full flex-col items-center">
-            <div
-                class="mx-auto w-full lg:grid lg:grid-cols-6 flex flex-col gap-y-8 items-center lg:items-end"
-            >
-                <div class="w-full text-center col-span-4 col-start-2">
+            <div class="mx-auto w-full flex flex-col lg:flex-row gap-8 items-center lg:items-end">
+                <div class="w-full text-center grow order-2">
                     <!-- title -->
                     <h1 class="font-bold lowercase !text-balance">{title}</h1>
 
@@ -68,7 +66,7 @@ const clockIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
 
                 <!-- metadata -->
                 <div
-                    class="flex flex-row lg:flex-col items-start order-first gap-x-4 gap-y-2 lg:gap-x-2 justify-center border-l-0 lg:border-l-2 border-theme-bg-tertiary pl-0 lg:pl-4 flex-wrap"
+                    class="flex flex-row lg:flex-col items-start order-1 gap-x-4 gap-y-2 lg:gap-x-2 justify-center border-l-0 lg:border-l-2 border-theme-bg-tertiary pl-0 lg:pl-4 flex-wrap"
                 >
                     <!--date-->
                     <div class="flex items-center lg:-mt-2 description">
@@ -91,9 +89,7 @@ const clockIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
                 </div>
 
                 <!-- author -->
-                <div
-                    class="mx-auto lg:mx-0 flex items-center justify-self-end order-last description"
-                >
+                <div class="mx-auto lg:mx-0 flex items-center justify-self-end order-3 description">
                     by
                     <figure class="size-6 overflow-hidden rounded-full mx-2">
                         <Image
