@@ -50,14 +50,12 @@ const {
             },
         ]}
     >
-        <div class="flex min-h-[100lvh] flex-col justify-between relative">
-            <Nav />
-            <main class="container flex-grow pt-24 md:pt-32 lg:pt-40 pb-8 lg:pb-16">
-                <slot />
-            </main>
-            <Footer />
-            <Noise />
-        </div>
+        <Nav />
+        <main class="container flex-grow pt-24 md:pt-32 lg:pt-40 pb-8 lg:pb-16">
+            <slot />
+        </main>
+        <Footer />
+        <Noise />
 
         <script is:inline>
             const handleToggleClick = () => {
