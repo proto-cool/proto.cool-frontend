@@ -50,6 +50,6 @@ Webfonts were licensed from Fontspring: https://www.fontspring.com/
 ... except for Public Sans: https://github.com/uswds/public-sans
 
 Made with love using:
-    Astro: https://astro.build/
-    Payload CMS: https://payloadcms.com/
-    Tailwind CSS: https://tailwindcss.com/
+Astro: https://astro.build/
+Payload CMS: https://payloadcms.com/
+Tailwind CSS: https://tailwindcss.com/
