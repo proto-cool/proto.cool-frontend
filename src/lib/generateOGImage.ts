@@ -127,7 +127,7 @@ const generateOGImage = async ({
                                               backgroundPosition: "center",
                                               backgroundRepeat: "no-repeat",
                                               backgroundSize: `${ogBGWidth}px ${ogBGHeight}px`,
-                                              opacity: "0.2",
+                                              opacity: "0.1",
                                               borderRadius: "36px",
                                           },
                                       },

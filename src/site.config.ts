@@ -1,32 +1,10 @@
 import { getSiteSettings } from "@lib/payload/utils.ts";
-import type { Media, Site } from "@lib/payload/payload-types";
+import type { Media, Site, User } from "@lib/payload/payload-types";
+
+type SocialPlatform = NonNullable<Site["social"]>[number]["platform"];
 
 export interface SocialLinkProps {
-    platform:
-        | "github"
-        | "bluesky"
-        | "mastodon"
-        | "linkedin"
-        | "instagram"
-        | "threads"
-        | "facebook"
-        | "youtube"
-        | "twitch"
-        | "tiktok"
-        | "snapchat"
-        | "reddit"
-        | "pinterest"
-        | "medium"
-        | "dev"
-        | "dribbble"
-        | "behance"
-        | "codepen"
-        | "producthunt"
-        | "discord"
-        | "slack"
-        | "whatsapp"
-        | "telegram"
-        | "email";
+    platform: SocialPlatform;
     link: string;
     text: string;
 }
@@ -64,8 +42,8 @@ const SiteConfig: SiteConfigProps = {
     name: payloadSiteSettings.name,
     title: payloadSiteSettings.title,
     description: payloadSiteSettings.description,
-    useViewTransitions: payloadSiteSettings["site-settings"]["use-view-transitions"] ?? true,
-    useAnimations: payloadSiteSettings["site-settings"]["use-animations"] ?? true,
+    useViewTransitions: payloadSiteSettings.siteSettings.useViewTransitions ?? true,
+    useAnimations: payloadSiteSettings.siteSettings.useAnimations ?? true,
 
     // Social links
     socialLinks:
@@ -76,8 +54,8 @@ const SiteConfig: SiteConfigProps = {
         })) ?? [],
 
     // What to display as your name throughout the site
-    authorName: payloadSiteSettings.author,
-    authorPhoto: payloadSiteSettings["author-photo"] as Media | null,
+    authorName: (payloadSiteSettings.author as User).displayName,
+    authorPhoto: (payloadSiteSettings.author as User).avatar as Media | null,
 
     // Site navigation
     navLinks:
@@ -87,10 +65,10 @@ const SiteConfig: SiteConfigProps = {
         })) ?? [],
 
     // used for analytics, etc
-    codeInjection: payloadSiteSettings["code-injection"],
+    codeInjection: payloadSiteSettings.codeInjection,
 
     // Used to calculate the date correctly for the site
-    timezone: payloadSiteSettings["site-settings"].timezone,
+    timezone: payloadSiteSettings.siteSettings.timezone,
 };
 
 export default SiteConfig;

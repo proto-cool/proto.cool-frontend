@@ -31,7 +31,7 @@ const { image, blockId, caption } = Astro.props as Props;
 
     <!-- Fullscreen Overlay -->
     <div
-        class="fixed inset-0 z-[999] hidden peer-checked:flex items-center justify-center bg-black bg-opacity-75"
+        class="fixed inset-0 z-[999] hidden peer-checked:flex items-center justify-center bg-black/50"
     >
         <label for={`checkbox-${blockId}`} class="cursor-zoom-out">
             <Image
@@ -40,6 +40,7 @@ const { image, blockId, caption } = Astro.props as Props;
                 width={image.width!}
                 height={image.height!}
                 class="w-full max-h-screen"
+                aria-hidden="true"
             />
         </label>
     </div>
