@@ -11,6 +11,16 @@ const fetchJson = async <T>(url: string): Promise<T> => {
     return response.json();
 };
 
+const getPayloadUrl = (pathname: string, depth: number = 1) => {
+    if (!payloadUrl) {
+        throw new Error("Payload URL not set");
+    }
+    const requestURL = new URL(payloadUrl);
+    requestURL.pathname = pathname;
+    requestURL.searchParams.set("depth", String(depth));
+    return requestURL;
+};
+
 export const getAllPosts = async () => {
     const postPages: PaginatedResponse<Post>[] = [];
 
