@@ -40,31 +40,29 @@ const { tag, page } = Astro.props as { tag: Tag; page: PaginatedResponse<Post> }
     title={`blog posts tagged #${tag.text}`}
     description={`All of my blog posts about ${tag.text}.`}
 >
-    <section>
-        <div class="mx-auto max-w-lg md:max-w-full">
-            <div class="flex w-full items-start gap-10 flex-col">
-                <h1 class="h2">
-                    posts about <span class="text-theme-color-primary">{tag.text}</span>
-                </h1>
-                <p class="description mt-6">
-                    Blog posts tagged with <span class="font-cool text-gradient">{tag.text}</span>,
-                    sorted by most recent.
-                    <br />
-                    Select a different post tag to filter posts for other topics.
-                    <br />
-                    <br />
-                    Or, go back to <a
-                        class="button inline-block px-2 py-0.5 button secondary text-sm"
-                        href="/blog/1/">all blog posts</a
-                    >
-                </p>
-            </div>
+    <section class="mx-auto max-w-lg md:max-w-full">
+        <div class="flex w-full items-start gap-10 flex-col">
+            <h1 class="h2">
+                posts about <span class="text-theme-color-primary">{tag.text}</span>
+            </h1>
+            <p class="description mt-6">
+                Blog posts tagged with <span class="font-cool text-gradient">{tag.text}</span>,
+                sorted by most recent.
+                <br />
+                Select a different post tag to filter posts for other topics.
+                <br />
+                <br />
+                Or, go back to <a
+                    class="button inline-block px-2 py-0.5 button secondary text-sm"
+                    href="/blog/1/">all blog posts</a
+                >
+            </p>
+        </div>
 
-            <div
-                class="flex flex-col gap-12 mt-16 border-l-0 lg:border-l-2 border-theme-bg-tertiary pl-0 lg:pl-4"
-            >
-                {page.docs.map((post) => <PostOverview post={post} data-onview="fade-in" />)}
-            </div>
+        <div
+            class="flex flex-col gap-12 mt-16 border-l-0 lg:border-l-2 border-theme-bg-tertiary pl-0 lg:pl-4"
+        >
+            {page.docs.map((post) => <PostOverview post={post} data-onview="fade-in" />)}
         </div>
     </section>
     <Pagination page={page} baseUrl={`/blog/tags/${slug}`} class="mt-8" slot="pagination" />
