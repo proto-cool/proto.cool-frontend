@@ -28,8 +28,7 @@ export const getAllPosts = async () => {
     let hasNextPage = true;
 
     while (hasNextPage) {
-        const requestURL = new URL(payloadUrl);
-        requestURL.pathname = "/api/posts";
+        const requestURL = getPayloadUrl("/api/posts");
         requestURL.searchParams.set("limit", "10");
         requestURL.searchParams.set("page", page.toString());
         requestURL.searchParams.set("sort", "-createdAt");
@@ -51,8 +50,7 @@ export const getNPosts = async (n: number) => {
     let hasNextPage = true;
 
     while (hasNextPage && posts.length < n) {
-        const requestURL = new URL(payloadUrl);
-        requestURL.pathname = "/api/posts";
+        const requestURL = getPayloadUrl("/api/posts");
         requestURL.searchParams.set("limit", n.toString());
         requestURL.searchParams.set("page", page.toString());
         requestURL.searchParams.set("sort", "-createdAt");
@@ -77,8 +75,7 @@ export const getPostsByTag = async (tag: string) => {
     let hasNextPage = true;
 
     while (hasNextPage) {
-        const requestURL = new URL(payloadUrl);
-        requestURL.pathname = "/api/posts";
+        const requestURL = getPayloadUrl("/api/posts");
         requestURL.searchParams.set("limit", "10");
         requestURL.searchParams.set("page", page.toString());
         requestURL.searchParams.set("sort", "-createdAt");
@@ -95,7 +92,7 @@ export const getPostsByTag = async (tag: string) => {
 };
 
 export const getPostBySlug = async (slug: string) => {
-    const requestURL = new URL(payloadUrl);
+    const requestURL = getPayloadUrl("/api/posts");
     requestURL.pathname = "/api/posts";
     requestURL.searchParams.set("limit", "1");
     requestURL.searchParams.set("where[slug][equals]", slug);
@@ -106,16 +103,14 @@ export const getPostBySlug = async (slug: string) => {
 };
 
 export const getAllTags = async () => {
-    const requestURL = new URL(payloadUrl);
-    requestURL.pathname = "/api/tags";
+    const requestURL = getPayloadUrl("/api/tags");
     requestURL.searchParams.set("limit", "50");
     requestURL.searchParams.set("sort", "slug");
     return await fetchJson<PaginatedResponse<Tag>>(requestURL.toString());
 };
 
 export const getTagBySlug = async (slug: string) => {
-    const requestURL = new URL(payloadUrl);
-    requestURL.pathname = "/api/tags";
+    const requestURL = getPayloadUrl("/api/tags");
     requestURL.searchParams.set("limit", "1");
     requestURL.searchParams.set("where[slug][equals]", slug);
 
@@ -125,8 +120,7 @@ export const getTagBySlug = async (slug: string) => {
 };
 
 export const getSiteSettings = async () => {
-    const requestURL = new URL(payloadUrl);
-    requestURL.pathname = "/api/globals/site";
+    const requestURL = getPayloadUrl("/api/globals/site", 10);
 
     return await fetchJson<Site>(requestURL.toString());
 };
