@@ -27,25 +27,23 @@ const { title, description, image, noindex } = Astro.props as Props;
     description={description}
     noindex={noindex}
 >
-    <main class="flex flex-col">
-        <div class="w-full lg:grid lg:grid-cols-3 gap-8">
-            <!--Content-->
-            <div class:list={["text-base-content text-base", "lg:col-span-2 lg:col-start-1"]}>
-                <slot />
-            </div>
-
-            <!--Tag content & sidebar-->
-            <aside class="col-span-3 mt-8 lg:col-span-1 lg:mt-0">
-                <Card
-                    title="post tags"
-                    class="sticky top-32 w-full bg-transparent border-2 border-theme-bg-tertiary"
-                    data-onview="fade-in"
-                    data-onview-delay="0.2"
-                >
-                    <TagCloud showCount={true} />
-                </Card>
-            </aside>
+    <div class="w-full lg:grid lg:grid-cols-3 gap-8">
+        <!--Content-->
+        <div class:list={["text-base-content text-base", "lg:col-span-2 lg:col-start-1"]}>
+            <slot />
         </div>
-        <slot name="pagination" />
-    </main>
+
+        <!--Tag content & sidebar-->
+        <aside class="col-span-3 mt-8 lg:col-span-1 lg:mt-0">
+            <Card
+                title="post tags"
+                class="sticky top-32 w-full bg-transparent border-2 border-theme-bg-tertiary"
+                data-onview="fade-in"
+                data-onview-delay="0.2"
+            >
+                <TagCloud showCount={true} />
+            </Card>
+        </aside>
+    </div>
+    <slot name="pagination" />
 </BaseLayout>

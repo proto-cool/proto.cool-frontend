@@ -7,43 +7,38 @@ import { getImageSrc } from "@/lib/payload/utils";
 import SocialLinks from "@components/social/SocialLinks.astro";
 ---
 
-<section id="hero" class="relative flex w-full pb-6">
-    <!-- hero items -->
-    <div class="flex flex-col-reverse md:flex-row items-center gap-12">
-        <!-- Hero text -->
-        <div class="flex items-start flex-col gap-4 md:gap-12">
-            <h1 class="h1" data-onview="fade-up" data-onview-delay="0.1">welcome 🎉</h1>
-            <p
-                class="description text-balance text-base"
-                data-onview="fade-up"
-                data-onview-delay="0.1"
-            >
-                I'm <span class="font-cool text-gradient">{SiteConfig.authorName}</span>, a
-                multi-talented geek with well over a decade of experience in full-stack software
-                development, with a passion for graphic design, 3D printing, game design, and all
-                sorts of other fun things.
-                <br />
-                <br />
-                I thrive at the intersection of technology and creativity.
-                <br />
-                <br />
-                Here, you’ll find tech insights, gaming adventures, and a mix of creative projects that
-                showcase my love for coding and creation. I hope there’s something for everyone.
-            </p>
-            <SocialLinks data-onview="fade-up" data-onview-delay="0.7" />
-        </div>
-        {
-            SiteConfig.authorPhoto?.url ? (
-                <Image
-                    class="aspect-square rounded-2xl shadow-md size-[240px]"
-                    width={512}
-                    height={512}
-                    src={getImageSrc(SiteConfig.authorPhoto.url)}
-                    alt={`$${SiteConfig.authorName} profile picture`}
-                    data-onview="fade-zoom"
-                    data-onview-delay="0.5"
-                />
-            ) : null
-        }
+<section
+    id="hero"
+    class="relative w-full pb-6 flex flex-col-reverse md:flex-row items-center gap-12"
+>
+    <div class="flex items-start flex-col gap-4 md:gap-12">
+        <h1 class="h1" data-onview="fade-up" data-onview-delay="0.1">welcome 🎉</h1>
+        <p class="description text-balance text-base" data-onview="fade-up" data-onview-delay="0.1">
+            I'm <span class="font-cool text-gradient">{SiteConfig.authorName}</span>, a
+            multi-talented geek with well over a decade of experience in full-stack software
+            development, with a passion for graphic design, 3D printing, game design, and all sorts
+            of other fun things.
+            <br />
+            <br />
+            I thrive at the intersection of technology and creativity.
+            <br />
+            <br />
+            Here, you’ll find tech insights, gaming adventures, and a mix of creative projects that showcase
+            my love for coding and creation. I hope there’s something for everyone.
+        </p>
+        <SocialLinks data-onview="fade-up" data-onview-delay="0.7" />
     </div>
+    {
+        SiteConfig.authorPhoto?.url ? (
+            <Image
+                class="aspect-square rounded-2xl shadow-md size-[240px]"
+                width={512}
+                height={512}
+                src={getImageSrc(SiteConfig.authorPhoto.url)}
+                alt={`$${SiteConfig.authorName} profile picture`}
+                data-onview="fade-zoom"
+                data-onview-delay="0.5"
+            />
+        ) : null
+    }
 </section>
