@@ -44,20 +44,20 @@ const {
             "overflow-y-scroll",
             "flex",
             "flex-col",
+            "justify-between",
             "min-h-[100vh]",
+            "relative",
             {
                 "use-animations": SiteConfig.useAnimations === true,
             },
         ]}
     >
-        <div class="flex min-h-[100lvh] flex-col justify-between relative">
-            <Nav />
-            <main class="container flex-grow pt-40 pb-8 lg:pb-16">
-                <slot />
-            </main>
-            <Footer />
-            <Noise />
-        </div>
+        <Nav />
+        <main class="container flex-grow pt-40 pb-8 lg:pb-16">
+            <slot />
+        </main>
+        <Footer />
+        <Noise />
 
         <script is:inline>
             const handleToggleClick = () => {
