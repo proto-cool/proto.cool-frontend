@@ -114,9 +114,13 @@
         scroll-behavior: smooth;
     }
 
-    body {
-        @apply relative;
+    /* Prevent scrolling when the mobile nav is open */
+    :root:has(#nav[data-nav-state="mobile-open"]) {
+        overflow: hidden;
+        touch-action: none;
+        height: 100vh;
     }
+
 
     body * {
         @apply transition-colors transition-shadow duration-200;

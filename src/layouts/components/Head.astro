@@ -2,7 +2,7 @@
 import { ClientRouter } from "astro:transitions";
 import SiteConfig, { type ContentType } from "@/site.config";
 import SEO from "@layouts/components/SEO.astro";
-import type { Post } from "../../lib/payload/payload-types";
+import type { Post } from "@lib/payload/payload-types";
 
 export interface HeadProps {
     type?: ContentType;

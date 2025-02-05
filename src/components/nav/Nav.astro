@@ -88,12 +88,10 @@ import MobileNavButton from "./buttons/MobileNavButton.astro";
 
     #nav-background {
         @apply absolute inset-0 z-[5] bg-transparent;
-        /* Background and filter styles */
 
         /* Radial gradient background */
         background-image: radial-gradient(var(--color-bg-primary) 1px, transparent 1px);
 
-        /* Background size */
         background-size: 3px 3px;
     }
 
@@ -118,7 +116,7 @@ import MobileNavButton from "./buttons/MobileNavButton.astro";
             </div>
         </div>
         <div
-            class="container space-y-2 py-6 flex-col gap-4 items-start z-20 group-data-[nav-state='mobile-open']:flex hidden"
+            class="container grow overflow-y-auto space-y-2 py-6 flex-col gap-4 items-start z-20 group-data-[nav-state='mobile-open']:flex hidden"
         >
             {
                 SiteConfig.navLinks.map((link) => (
