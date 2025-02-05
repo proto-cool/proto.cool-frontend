@@ -112,14 +112,12 @@
     :root {
         @apply font-sans text-lg leading-[1.8rem];
         @apply text-theme-fg-primary bg-theme-bg-primary;
-        scroll-behavior: smooth;
+        @apply scroll-smooth;
     }
 
     /* Prevent scrolling when the mobile nav is open */
     :root:has(#nav[data-nav-state="mobile-open"]) {
-        overflow: hidden;
-        touch-action: none;
-        height: 100vh;
+        @apply overflow-hidden touch-none;
     }
 
     body * {
