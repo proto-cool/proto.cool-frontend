@@ -1,31 +1,22 @@
 ---
 import SiteConfig from "@/site.config";
 import { Image } from "astro:assets";
-import { getImageSrc } from "@/lib/payload/utils";
+import { getHeroContent, getImageSrc } from "@/lib/payload/utils";
 
 // components
 import SocialLinks from "@components/social/SocialLinks.astro";
+import RichTextContentRenderer from "@/components/core/RichTextContentRenderer.astro";
+
+// data
+const hero = await getHeroContent();
 ---
 
 <section
     id="hero"
     class="relative w-full pb-6 flex flex-col-reverse md:flex-row items-center gap-12"
 >
-    <div class="flex items-start flex-col gap-4 md:gap-12">
-        <h1 class="h1" data-onview="fade-up" data-onview-delay="0.1">welcome 🎉</h1>
-        <p class="description text-balance text-base" data-onview="fade-up" data-onview-delay="0.1">
-            I'm <span class="font-cool text-gradient">{SiteConfig.authorName}</span>, a
-            multi-talented geek with well over a decade of experience in full-stack software
-            development, with a passion for graphic design, 3D printing, game design, and all sorts
-            of other fun things.
-            <br />
-            <br />
-            I thrive at the intersection of technology and creativity.
-            <br />
-            <br />
-            Here, you’ll find tech insights, gaming adventures, and a mix of creative projects that showcase
-            my love for coding and creation. I hope there’s something for everyone.
-        </p>
+    <div class="flex items-start flex-col gap-4 md:gap-12 description text-balance text-base">
+        <RichTextContentRenderer node={hero.content.root} />
         <SocialLinks data-onview="fade-up" data-onview-delay="0.7" />
     </div>
     {

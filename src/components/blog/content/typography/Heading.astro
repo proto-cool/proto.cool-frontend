@@ -6,6 +6,6 @@ const { tag, children } = Astro.props;
 let Component = tag;
 ---
 
-<Component class:list={["font-cool", "lowercase"]} id={getSlugFromNode(children)}>
+<Component class:list={["lowercase"]} id={getSlugFromNode(children)}>
     {children.map((child) => <Text content={renderNode(child)} />)}
 </Component>

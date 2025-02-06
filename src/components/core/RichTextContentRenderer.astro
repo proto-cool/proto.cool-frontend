@@ -1,14 +1,14 @@
 ---
-import type { Node } from "@lib/types";
-import { getImageSrc } from "@lib/payload/utils";
+import type { Node } from "../../lib/types";
+import { getImageSrc } from "../../lib/payload/utils";
 
-import Heading from "./content/typography/Heading.astro";
-import Paragraph from "./content/typography/Paragraph.astro";
-import Blockquote from "./content/typography/Blockquote.astro";
-import List from "./content/lists/List.astro";
-import CodeBlock from "./content/blocks/CodeBlock.astro";
-import ImageBlock from "./content/blocks/ImageBlock.astro";
-import Link from "./content/typography/Link.astro";
+import Heading from "../blog/content/typography/Heading.astro";
+import Paragraph from "../blog/content/typography/Paragraph.astro";
+import Blockquote from "../blog/content/typography/Blockquote.astro";
+import List from "../blog/content/lists/List.astro";
+import CodeBlock from "../blog/content/blocks/CodeBlock.astro";
+import ImageBlock from "../blog/content/blocks/ImageBlock.astro";
+import Link from "../blog/content/typography/Link.astro";
 
 const { node } = Astro.props as { node: Node };
 ---
@@ -16,6 +16,8 @@ const { node } = Astro.props as { node: Node };
 {node.type === "root" && node.children.map((child: Node) => <Astro.self node={child} />)}
 
 {node.type === "paragraph" && <Paragraph children={node.children ?? []} />}
+
+{node.type === "linebreak" && <br />}
 
 {node.type === "heading" && <Heading tag={node.tag} children={node.children ?? []} />}
 
@@ -46,5 +48,11 @@ const { node } = Astro.props as { node: Node };
             caption={node.fields.blockName}
             blockId={node.fields.id}
         />
+    )
+}
+
+{
+    node.type === "inlineBlock" && node.fields?.blockType === "coolText" && (
+        <span class="font-cool text-gradient">{node.fields?.value}</span>
     )
 }

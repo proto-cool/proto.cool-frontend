@@ -147,7 +147,7 @@
     h2,
     h3,
     h4 {
-        @apply scroll-m-32;
+        @apply text-theme-fg-primary scroll-m-32;
     }
 
     .description {

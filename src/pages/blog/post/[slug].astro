@@ -7,7 +7,7 @@ import { getAllPosts } from "@lib/payload/utils";
 import type { Post } from "@lib/payload/payload-types";
 
 // components
-import ContentRenderer from "@components/blog/ContentRenderer.astro";
+import RichTextContentRenderer from "@/components/core/RichTextContentRenderer.astro";
 
 export async function getStaticPaths() {
     const postPages = await getAllPosts();
@@ -24,5 +24,5 @@ const post = Astro.props as Post;
 ---
 
 <BlogPostLayout post={post}>
-    <ContentRenderer node={post.content.root} />
+    <RichTextContentRenderer node={post.content.root} />
 </BlogPostLayout>
