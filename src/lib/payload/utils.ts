@@ -1,4 +1,4 @@
-import type { Post, Site, Tag } from "@/lib/payload/payload-types";
+import type { Hero, Post, Site, Tag } from "@/lib/payload/payload-types";
 import type { PaginatedResponse } from "@lib/types";
 
 const payloadUrl = import.meta.env.PAYLOAD_URL || undefined;
@@ -123,6 +123,12 @@ export const getSiteSettings = async () => {
     const requestURL = getPayloadUrl("/api/globals/site", 10);
 
     return await fetchJson<Site>(requestURL.toString());
+};
+
+export const getHeroContent = async () => {
+    const requestURL = getPayloadUrl("/api/globals/hero");
+
+    return await fetchJson<Hero>(requestURL.toString());
 };
 
 export const getImageSrc = (src: string): string => {

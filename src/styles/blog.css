@@ -67,3 +67,7 @@
 #blog-post-content pre.shiki code {
     @apply block;
 }
+
+#blog-post-content h1, #blog-post-content h2, #blog-post-content h3, #blog-post-content h4 {
+    @apply font-cool;
+}

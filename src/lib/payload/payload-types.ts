@@ -11,22 +11,22 @@ export interface Config {
         users: UserAuthOperations;
     };
     collections: {
-        tags: Tag;
         posts: Post;
+        tags: Tag;
+        projects: Project;
         media: Media;
         users: User;
-        projects: Project;
         "payload-locked-documents": PayloadLockedDocument;
         "payload-preferences": PayloadPreference;
         "payload-migrations": PayloadMigration;
     };
     collectionsJoins: {};
     collectionsSelect: {
-        tags: TagsSelect<false> | TagsSelect<true>;
         posts: PostsSelect<false> | PostsSelect<true>;
+        tags: TagsSelect<false> | TagsSelect<true>;
+        projects: ProjectsSelect<false> | ProjectsSelect<true>;
         media: MediaSelect<false> | MediaSelect<true>;
         users: UsersSelect<false> | UsersSelect<true>;
-        projects: ProjectsSelect<false> | ProjectsSelect<true>;
         "payload-locked-documents":
             | PayloadLockedDocumentsSelect<false>
             | PayloadLockedDocumentsSelect<true>;
@@ -37,9 +37,11 @@ export interface Config {
         defaultIDType: number;
     };
     globals: {
+        hero: Hero;
         site: Site;
     };
     globalsSelect: {
+        hero: HeroSelect<false> | HeroSelect<true>;
         site: SiteSelect<false> | SiteSelect<true>;
     };
     locale: null;
@@ -68,20 +70,6 @@ export interface UserAuthOperations {
         email: string;
         password: string;
     };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tags".
- */
-export interface Tag {
-    id: number;
-    text: string;
-    slug?: string | null;
-    slugLock?: boolean | null;
-    description?: string | null;
-    postCount?: number | null;
-    updatedAt: string;
-    createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -115,6 +103,20 @@ export interface Post {
     updatedAt: string;
     createdAt: string;
     _status?: ("draft" | "published") | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tags".
+ */
+export interface Tag {
+    id: number;
+    text: string;
+    slug?: string | null;
+    slugLock?: boolean | null;
+    description?: string | null;
+    postCount?: number | null;
+    updatedAt: string;
+    createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -155,25 +157,6 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
-    id: number;
-    displayName: string;
-    avatar?: (number | null) | Media;
-    updatedAt: string;
-    createdAt: string;
-    email: string;
-    resetPasswordToken?: string | null;
-    resetPasswordExpiration?: string | null;
-    salt?: string | null;
-    hash?: string | null;
-    loginAttempts?: number | null;
-    lockUntil?: string | null;
-    password?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "projects".
  */
 export interface Project {
@@ -203,18 +186,41 @@ export interface Project {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+    id: number;
+    displayName: string;
+    avatar?: (number | null) | Media;
+    updatedAt: string;
+    createdAt: string;
+    email: string;
+    resetPasswordToken?: string | null;
+    resetPasswordExpiration?: string | null;
+    salt?: string | null;
+    hash?: string | null;
+    loginAttempts?: number | null;
+    lockUntil?: string | null;
+    password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
     id: number;
     document?:
         | ({
+              relationTo: "posts";
+              value: number | Post;
+          } | null)
+        | ({
               relationTo: "tags";
               value: number | Tag;
           } | null)
         | ({
-              relationTo: "posts";
-              value: number | Post;
+              relationTo: "projects";
+              value: number | Project;
           } | null)
         | ({
               relationTo: "media";
@@ -223,10 +229,6 @@ export interface PayloadLockedDocument {
         | ({
               relationTo: "users";
               value: number | User;
-          } | null)
-        | ({
-              relationTo: "projects";
-              value: number | Project;
           } | null);
     globalSlug?: string | null;
     user: {
@@ -272,19 +274,6 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tags_select".
- */
-export interface TagsSelect<T extends boolean = true> {
-    text?: T;
-    slug?: T;
-    slugLock?: T;
-    description?: T;
-    postCount?: T;
-    updatedAt?: T;
-    createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -300,6 +289,33 @@ export interface PostsSelect<T extends boolean = true> {
     updatedAt?: T;
     createdAt?: T;
     _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tags_select".
+ */
+export interface TagsSelect<T extends boolean = true> {
+    text?: T;
+    slug?: T;
+    slugLock?: T;
+    description?: T;
+    postCount?: T;
+    updatedAt?: T;
+    createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects_select".
+ */
+export interface ProjectsSelect<T extends boolean = true> {
+    name?: T;
+    slug?: T;
+    slugLock?: T;
+    url?: T;
+    description?: T;
+    content?: T;
+    updatedAt?: T;
+    createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -362,20 +378,6 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "projects_select".
- */
-export interface ProjectsSelect<T extends boolean = true> {
-    name?: T;
-    slug?: T;
-    slugLock?: T;
-    url?: T;
-    description?: T;
-    content?: T;
-    updatedAt?: T;
-    createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -405,6 +407,30 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
     batch?: T;
     updatedAt?: T;
     createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hero".
+ */
+export interface Hero {
+    id: number;
+    content: {
+        root: {
+            type: string;
+            children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+            }[];
+            direction: ("ltr" | "rtl") | null;
+            format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+            indent: number;
+            version: number;
+        };
+        [k: string]: unknown;
+    };
+    updatedAt?: string | null;
+    createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -496,12 +522,22 @@ export interface Site {
             | "Australia/Perth"
             | "Antarctica/Palmer"
             | "Antarctica/McMurdo";
-        enableBuilds?: boolean | null;
         useViewTransitions?: boolean | null;
         useAnimations?: boolean | null;
+        enableBuilds?: boolean | null;
     };
     updatedAt?: string | null;
     createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hero_select".
+ */
+export interface HeroSelect<T extends boolean = true> {
+    content?: T;
+    updatedAt?: T;
+    createdAt?: T;
+    globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -532,13 +568,23 @@ export interface SiteSelect<T extends boolean = true> {
         | T
         | {
               timezone?: T;
-              enableBuilds?: T;
               useViewTransitions?: T;
               useAnimations?: T;
+              enableBuilds?: T;
           };
     updatedAt?: T;
     createdAt?: T;
     globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CoolText".
+ */
+export interface CoolText {
+    value: string;
+    id?: string | null;
+    blockName?: string | null;
+    blockType: "coolText";
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
