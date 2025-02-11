@@ -15,6 +15,8 @@ function removeDataAttributes(element: Element) {
 
 // Initialize animations
 function enable() {
+    document.documentElement.setAttribute("data-onview-enabled", "true");
+
     const elements = document.querySelectorAll(`[data-${config.attribute_prefix}]`);
 
     elements.forEach((element: Element) => {

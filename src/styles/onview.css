@@ -1,0 +1,33 @@
+
+/* all animations */
+:root[data-onview-enabled] [data-onview] {
+    @apply pointer-events-none;
+
+    &.onview-animate {
+        @apply pointer-events-auto;
+    }
+}
+
+/* fade animations */
+:root[data-onview-enabled] [data-onview^="fade"] {
+    @apply opacity-0;
+}
+
+/* zoom animations */
+:root[data-onview-enabled] [data-onview^="zoom"] {
+    @apply opacity-0;
+}
+
+/* slide animations */
+:root[data-onview-enabled] [data-onview^="slide"] {
+    @apply invisible;
+
+    &.onview-animate {
+        @apply visible;
+    }
+}
+
+/* flip animations */
+:root[data-onview-enabled] [data-onview^="flip"] {
+    backface-visibility: hidden;
+}
