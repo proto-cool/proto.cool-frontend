@@ -8,6 +8,7 @@ import Noise from "@components/core/Noise.astro";
 // style import
 import "@/styles/main.css";
 import "@/styles/fonts.css";
+import "@proto-cool/cascade/cascade.css";
 
 // data
 import SiteConfig, { type ContentType } from "@/site.config";
@@ -88,18 +89,6 @@ const {
             });
 
             setupThemeToggles();
-        </script>
-
-        <!-- Scroll animations -->
-        <script>
-            import onview from "@lib/onview/onview";
-
-            document.addEventListener("astro:after-swap", function () {
-                const body = document.querySelector("body");
-                if (body!.classList.contains("use-animations")) onview.enable();
-            });
-            const body = document.querySelector("body");
-            if (body!.classList.contains("use-animations")) onview.enable();
         </script>
     </body>
 </html>

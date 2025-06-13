@@ -38,8 +38,8 @@ const { title, description, image, noindex } = Astro.props as Props;
             <Card
                 title="post tags"
                 class="sticky top-32 w-full bg-transparent border-2 border-theme-bg-tertiary"
-                data-onview="fade-in"
-                data-onview-delay="0.1"
+                data-cascade="fadeIn"
+                data-cascade-delay="0.1"
             >
                 <TagCloud showCount={true} />
             </Card>

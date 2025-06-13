@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@import "./onview.css";
-
 /* base layer imports */
 @import "./fonts.css" layer(base);
 

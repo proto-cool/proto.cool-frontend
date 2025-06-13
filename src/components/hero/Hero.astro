@@ -17,15 +17,15 @@ const hero = await getHeroContent();
 >
     <div
         class="flex items-start flex-col gap-4 md:gap-12 description text-balance text-base"
-        data-onview="fade-in"
-        data-onview-delay="0.2"
+        data-cascade="fadeIn"
+        data-cascade-delay="0.2"
     >
         <RichTextContentRenderer
             node={hero.content.root}
-            data-onview="fade-in"
-            data-onview-delay="0.2"
+            data-cascade="fadeIn"
+            data-cascade-delay="0.2"
         />
-        <SocialLinks data-onview="fade-up" data-onview-delay="0.5" />
+        <SocialLinks data-cascade="fadeInUp" data-cascade-delay="0.5" />
     </div>
     {
         SiteConfig.authorPhoto?.url ? (
@@ -35,8 +35,8 @@ const hero = await getHeroContent();
                 height={512}
                 src={getImageSrc(SiteConfig.authorPhoto.url)}
                 alt={`$${SiteConfig.authorName} profile picture`}
-                data-onview="fade-zoom"
-                data-onview-delay="0.5"
+                data-cascade="fadeInZoom"
+                data-cascade-delay="0.5"
             />
         ) : null
     }
