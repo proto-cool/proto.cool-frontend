@@ -1,29 +1,29 @@
 /* custom fonts */
 @font-face {
-    font-family: "Public Sans";
+    font-family: "Bio Sans";
     src:
-        url("/fonts/PublicSans-Regular.woff2") format("woff2"),
-        url("/fonts/PublicSans-Regular.woff") format("woff");
+        url("/fonts/biosans-regular-webfont.woff2") format("woff2"),
+        url("/fonts/biosans-regular-webfont.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Public Sans";
+    font-family: "Bio Sans";
     src:
-        url("/fonts/PublicSans-Bold.woff2") format("woff2"),
-        url("/fonts/PublicSans-Bold.woff") format("woff");
+        url("/fonts/biosans-bold-webfont.woff2") format("woff2"),
+        url("/fonts/biosans-bold-webfont.woff") format("woff");
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Public Sans";
+    font-family: "Bio Sans";
     src:
-        url("/fonts/PublicSans-Italic.woff2") format("woff2"),
-        url("/fonts/PublicSans-Italic.woff") format("woff");
+        url("/fonts/biosans-italic-webfont.woff2") format("woff2"),
+        url("/fonts/biosans-italic-webfont.woff") format("woff");
     font-weight: normal;
     font-style: italic;
     font-display: swap;
@@ -50,21 +50,9 @@
 }
 
 @font-face {
-    font-family: "Monaspace Neon";
-    src:
-        url("/fonts/MonaspaceNeon-Regular.woff2") format("woff2"),
-        url("/fonts/MonaspaceNeon-Regular.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Monaspace Neon";
-    src:
-        url("/fonts/MonaspaceNeon-Bold.woff2") format("woff2"),
-        url("/fonts/MonaspaceNeon-Bold.woff") format("woff");
-    font-weight: bold;
+    font-family: "CommitMono";
+    src: url("/fonts/CommitMono-VariableFont.woff2") format("woff2-variations");
+    font-weight: 100 900;
     font-style: normal;
     font-display: swap;
 }

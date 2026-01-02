@@ -46,10 +46,10 @@
     --color-theme-color-tertiary: var(--color-tertiary);
 
     /* font declarations */
-    --font-sans: "Public Sans", "Arial", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji",
+    --font-sans: "Bio Sans", "Helvetica", "Segoe UI", "Arial", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji",
         "Segoe UI Symbol";
 
-    --font-mono: "Monaspace Neon", "monospace";
+    --font-mono: "CommitMono", "monospace";
     --font-cool: "Chinook", "sans-serif";
 
     /* breakpoints for responsiveness */

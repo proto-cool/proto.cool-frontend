@@ -66,7 +66,7 @@ const generateOGImage = async ({
         type: "div",
         props: {
             style: {
-                fontFamily: "'Public Sans', sans-serif",
+                fontFamily: "'Bio Sans', sans-serif",
                 fontSize: "24px",
                 backgroundColor: colors.base["900"],
                 color: colors.base["200"],
@@ -179,7 +179,7 @@ const generateOGImage = async ({
                                         display: "flex",
                                         flexDirection: "row",
                                         alignItems: "center",
-                                        fontFamily: "'Monaspace Neon', sans-serif",
+                                        fontFamily: "'CommitMono', sans-serif",
                                         fontSize: "32px",
                                         gap: "8px",
                                         borderRadius: "12px",
@@ -248,13 +248,17 @@ const generateOGImage = async ({
         height: 630,
         fonts: [
             {
-                name: "Public Sans",
-                data: Buffer.from(fs.readFileSync("./public/fonts/PublicSans-Regular.woff").buffer),
+                name: "Bio Sans",
+                data: Buffer.from(
+                    fs.readFileSync("./public/fonts/biosans-regular-webfont.woff").buffer,
+                ),
                 weight: 400,
             },
             {
-                name: "Public Sans",
-                data: Buffer.from(fs.readFileSync("./public/fonts/PublicSans-Bold.woff").buffer),
+                name: "Bio Sans",
+                data: Buffer.from(
+                    fs.readFileSync("./public/fonts/biosans-bold-webfont.woff").buffer,
+                ),
                 weight: 600,
             },
             {
@@ -265,9 +269,9 @@ const generateOGImage = async ({
                 weight: 400,
             },
             {
-                name: "Monaspace Neon",
+                name: "CommitMono",
                 data: Buffer.from(
-                    fs.readFileSync("./public/fonts/MonaspaceNeon-Regular.woff").buffer,
+                    fs.readFileSync("./public/fonts/CommitMono-VariableFont.ttf").buffer,
                 ),
                 weight: 400,
             },
