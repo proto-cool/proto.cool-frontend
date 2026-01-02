@@ -8,6 +8,7 @@ import Noise from "@components/core/Noise.astro";
 // style import
 import "@/styles/main.css";
 import "@/styles/fonts.css";
+import "@proto-cool/cascade/cascade.css";
 
 // data
 import SiteConfig, { type ContentType } from "@/site.config";
@@ -31,7 +32,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="en" transition:animate="fade">
+<html lang="en" transition:animate="fade" data-theme="dark">
     <Head
         type={type}
         title={title}
@@ -45,6 +46,7 @@ const {
             "flex",
             "flex-col",
             "min-h-[100vh]",
+            "relative",
             {
                 "use-animations": SiteConfig.useAnimations === true,
             },
@@ -60,8 +62,6 @@ const {
         <script is:inline>
             const handleToggleClick = () => {
                 const element = document.documentElement;
-                element.classList.toggle("dark");
-
                 const currentValue = element.getAttribute("data-theme");
 
                 element.setAttribute("data-theme", currentValue === "light" ? "dark" : "light");
@@ -89,18 +89,6 @@ const {
             });
 
             setupThemeToggles();
-        </script>
-
-        <!-- Scroll animations -->
-        <script>
-            import onview from "@lib/onview/onview";
-
-            document.addEventListener("astro:after-swap", function () {
-                const body = document.querySelector("body");
-                if (body!.classList.contains("use-animations")) onview.enable();
-            });
-            const body = document.querySelector("body");
-            if (body!.classList.contains("use-animations")) onview.enable();
         </script>
     </body>
 </html>

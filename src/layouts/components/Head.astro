@@ -4,6 +4,8 @@ import SiteConfig, { type ContentType } from "@/site.config";
 import SEO from "@layouts/components/SEO.astro";
 import type { Post } from "@lib/payload/payload-types";
 
+import cascade from "@proto-cool/cascade";
+
 export interface HeadProps {
     type?: ContentType;
     title: string;
@@ -46,6 +48,8 @@ const isProd = import.meta.env.PROD;
 
     <SEO type={type} title={title} post={post} noindex={noindex} description={description} />
 
+    <Fragment set:html={cascade.noscript} />
+
     {SiteConfig.useViewTransitions && <ClientRouter fallback="none" />}
 
     <script is:inline>
@@ -72,6 +76,18 @@ const isProd = import.meta.env.PROD;
 
             window.localStorage.setItem("theme", theme);
         })();
+    </script>
+
+    <!-- Scroll animations -->
+    <script>
+        import cascade from "@proto-cool/cascade";
+
+        document.addEventListener("astro:after-swap", function () {
+            const body = document.querySelector("body");
+            if (body!.classList.contains("use-animations")) cascade.enable();
+        });
+        const body = document.querySelector("body");
+        if (body!.classList.contains("use-animations")) cascade.enable();
     </script>
 
     {SiteConfig.codeInjection && isProd && <Fragment set:html={SiteConfig.codeInjection} />}

@@ -15,9 +15,17 @@ const hero = await getHeroContent();
     id="hero"
     class="relative w-full pb-6 flex flex-col-reverse md:flex-row items-center gap-12"
 >
-    <div class="flex items-start flex-col gap-4 md:gap-12 description text-balance text-base">
-        <RichTextContentRenderer node={hero.content.root} />
-        <SocialLinks data-onview="fade-up" data-onview-delay="0.7" />
+    <div
+        class="flex items-start flex-col gap-4 md:gap-12 description text-balance text-base"
+        data-cascade="fadeIn"
+        data-cascade-delay="0.2"
+    >
+        <RichTextContentRenderer
+            node={hero.content.root}
+            data-cascade="fadeIn"
+            data-cascade-delay="0.2"
+        />
+        <SocialLinks data-cascade="fadeInUp" data-cascade-delay="0.5" />
     </div>
     {
         SiteConfig.authorPhoto?.url ? (
@@ -27,8 +35,6 @@ const hero = await getHeroContent();
                 height={512}
                 src={getImageSrc(SiteConfig.authorPhoto.url)}
                 alt={`$${SiteConfig.authorName} profile picture`}
-                data-onview="fade-zoom"
-                data-onview-delay="0.5"
             />
         ) : null
     }
