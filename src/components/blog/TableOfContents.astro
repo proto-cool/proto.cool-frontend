@@ -93,9 +93,6 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
         });
     }
 
-    // runs on initial page load
-    initTOC();
-
     // runs on view transitions navigation
-    document.addEventListener("astro:after-swap", initTOC);
+    document.addEventListener("astro:page-load", initTOC);
 </script>

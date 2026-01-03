@@ -1,63 +1,66 @@
 ---
+interface Props {
+    class?: string;
+}
 
+const { class: className } = Astro.props;
 ---
 
 <style>
     @reference "@/styles/main.css";
 
-    #open-mobile-nav-button,
-    #close-mobile-nav-button {
-        @apply text-theme-fg-primary w-8 h-8 cursor-pointer;
+    #mobile-nav-toggle {
+        @apply text-theme-fg-primary cursor-pointer;
     }
 
-    #open-mobile-nav-button {
-        @apply group-data-[nav-state="closed"]:block group-data-[nav-state="mobile-open"]:hidden;
+    .hamburger-line {
+        @apply col-start-1 row-start-1 h-0.5 w-full bg-current transition-all duration-150 ease-in-out;
     }
 
-    #close-mobile-nav-button {
-        @apply group-data-[nav-state="closed"]:hidden group-data-[nav-state="mobile-open"]:block;
+    /* Hamburger positions (closed state) */
+    .line-1 { @apply -translate-y-1.5; }
+    .line-2 { @apply opacity-100; }
+    .line-3 { @apply translate-y-1.5; }
+
+    /* X positions (mobile-open state) */
+    :global(.group[data-nav-state="mobile-open"]) .line-1 {
+        @apply translate-y-0 rotate-45;
+    }
+    :global(.group[data-nav-state="mobile-open"]) .line-2 {
+        @apply opacity-0;
+    }
+    :global(.group[data-nav-state="mobile-open"]) .line-3 {
+        @apply translate-y-0 -rotate-45;
     }
 </style>
 
-<button id="open-mobile-nav-button" type="button">
-    <span class="sr-only">Open navigation menu</span>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8">
-        <path
-            fill-rule="evenodd"
-            d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
-            clip-rule="evenodd"></path>
-    </svg>
-</button>
-<button id="close-mobile-nav-button" type="button">
-    <span class="sr-only">Close navigation menu</span>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8">
-        <path
-            fill-rule="evenodd"
-            d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
-            clip-rule="evenodd"></path>
-    </svg>
+<button id="mobile-nav-toggle" type="button" class:list={["relative flex items-center justify-center", className]}>
+    <span class="sr-only">Toggle navigation menu</span>
+    <div class="grid h-full w-full place-items-center pointer-events-none">
+        <span class="hamburger-line line-1"></span>
+        <span class="hamburger-line line-2"></span>
+        <span class="hamburger-line line-3"></span>
+    </div>
 </button>
 
 <script is:inline>
     function initMobileNav() {
         const nav = document.getElementById("nav");
+        const toggleButton = document.getElementById("mobile-nav-toggle");
 
-        const openMobileNavButton = document.getElementById("open-mobile-nav-button");
-        const closeMobileNavButton = document.getElementById("close-mobile-nav-button");
-
-        if (openMobileNavButton && closeMobileNavButton) {
-            openMobileNavButton.addEventListener("click", () =>
-                nav.setAttribute("data-nav-state", "mobile-open"),
-            );
-            closeMobileNavButton.addEventListener("click", () =>
-                nav.setAttribute("data-nav-state", "closed"),
-            );
+        if (toggleButton && nav) {
+            toggleButton.addEventListener("click", () => {
+                const currentState = nav.getAttribute("data-nav-state");
+                if (currentState === "mobile-open") {
+                    nav.setAttribute("data-nav-state", "closed");
+                    window.dispatchEvent(new Event('scroll'));
+                } else {
+                    nav.setAttribute("data-nav-state", "mobile-open");
+                }
+            });
         }
     }
 
-    // runs on initial page load
-    initMobileNav();
-
     // runs on view transitions navigation
-    document.addEventListener("astro:after-swap", initMobileNav);
+    document.addEventListener("astro:page-load", initMobileNav);
 </script>

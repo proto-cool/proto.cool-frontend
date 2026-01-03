@@ -168,5 +168,7 @@ const clockIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
 
 <script>
     import { initCodeBlocks } from "@lib/blog/blockUtils";
-    initCodeBlocks();
+    document.addEventListener("astro:page-load", () => {
+        initCodeBlocks();
+    });
 </script>

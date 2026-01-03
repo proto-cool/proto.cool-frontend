@@ -62,11 +62,13 @@
         @apply font-sans text-lg leading-[1.8rem];
         @apply text-theme-fg-primary bg-theme-bg-primary;
         @apply scroll-smooth;
+        scrollbar-gutter: stable;
     }
 
     /* Prevent scrolling when the mobile nav is open */
-    :root:has(#nav[data-nav-state="mobile-open"]) {
-        @apply overflow-hidden touch-none;
+    :root:has(#nav[data-nav-state="mobile-open"]),
+    :root:has(#nav[data-nav-state="mobile-open"]) body {
+        @apply overflow-hidden;
     }
 
     body * {
