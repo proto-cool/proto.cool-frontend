@@ -52,15 +52,9 @@ const clockIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
         <!-- Blog post info -->
         <div class="flex w-full flex-col items-center">
             <div
-                class="relative w-full bg-theme-bg-secondary/10 border border-theme-bg-tertiary rounded-[2.5rem] p-8 md:p-12 lg:p-16 overflow-hidden"
+                class="relative w-full bg-theme-bg-secondary/10 border border-theme-bg-tertiary rounded-[2.5rem] p-6 md:p-8 overflow-hidden"
             >
-                <!-- Decorative corner glow -->
-                <div
-                    class="absolute -top-12 -left-12 w-64 h-64 bg-theme-color-primary/5 blur-3xl rounded-full"
-                >
-                </div>
-
-                <div class="relative z-10 grid lg:grid-cols-4 gap-10 lg:gap-16 items-start">
+                <div class="relative z-10 grid lg:grid-cols-4 gap-10 lg:gap-12 items-start">
                     <!-- metadata (desktop: left column, mobile: top) -->
                     <div
                         class="flex flex-row lg:flex-col items-start gap-x-6 gap-y-4 flex-wrap lg:border-r border-theme-bg-tertiary lg:pr-12"
@@ -93,14 +87,14 @@ const clockIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
                     <div class="lg:col-span-3 flex flex-col gap-8">
                         <div class="flex flex-col gap-4">
                             <h1
-                                class="font-medium lowercase !text-balance text-4xl md:text-5xl lg:text-6xl tracking-tight"
+                                class="font-medium lowercase !text-balance text-3xl md:text-4xl lg:text-5xl tracking-tight"
                             >
                                 {title}
                             </h1>
 
                             {
                                 subtitle && (
-                                    <h2 class="text-2xl md:text-3xl opacity-85 lowercase font-medium text-theme-fg-secondary !text-balance">
+                                    <h2 class="text-xl md:text-2xl opacity-85 lowercase font-medium text-theme-fg-secondary !text-balance">
                                         {subtitle}
                                     </h2>
                                 )
@@ -153,7 +147,7 @@ const clockIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
         </div>
 
         <!-- article content -->
-        <div class:list={["w-full", "mt-24"]}>
+        <div class:list={["w-full", "mt-16"]}>
             <div class="mx-auto max-w-2xl gap-12 lg:grid lg:max-w-none lg:grid-cols-3">
                 <!--Content-->
                 <div
@@ -162,7 +156,7 @@ const clockIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
                         headings.length !== 0 ? "lg:col-span-2 lg:col-start-1" : "lg:col-span-3",
                     ]}
                 >
-                    <section id="blog-post-content" class="mx-auto flex flex-col gap-8">
+                    <section id="blog-post-content" class="mx-auto flex flex-col gap-6">
                         <slot />
                     </section>
 
