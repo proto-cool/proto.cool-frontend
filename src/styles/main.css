@@ -83,7 +83,7 @@
 /* Core theme styles */
 @layer base {
     :root {
-        @apply font-sans text-lg leading-loose;
+        @apply font-sans text-lg leading-relaxed;
         @apply text-theme-fg-primary bg-theme-bg-primary;
         @apply scroll-smooth;
         scrollbar-gutter: stable;
@@ -145,6 +145,17 @@
         }
         to {
             transform: translateX(100%);
+        }
+    }
+
+    @keyframes scroll-indicator {
+        0%, 100% {
+            transform: translateY(0);
+            opacity: 0.5;
+        }
+        50% {
+            transform: translateY(6px);
+            opacity: 1;
         }
     }
 
