@@ -31,13 +31,13 @@ const hashtagIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 </svg>`;
 ---
 
-<div {...rest}>
+<div class="group" {...rest}>
     {
         previewImageUrl && (
             <div class="grid grid-cols-4 gap-4 mb-8">
                 <a
                     href={`/blog/post/${post.slug}/`}
-                    class="col-span-4 col-start-1 lg:col-span-3 lg:col-start-2 rounded-3xl opacity-95 dark:opacity-90 hover:opacity-100 aspect-video object-cover transition-opacity duration-300 group overflow-hidden shadow-sm"
+                    class="img-tint-saturated group col-span-4 col-start-1 lg:col-span-3 lg:col-start-2 rounded-3xl aspect-video object-cover overflow-hidden shadow-sm"
                     data-astro-prefetch
                 >
                     <Image
@@ -47,7 +47,7 @@ const hashtagIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                         width={768}
                         quality="high"
                         loading="eager"
-                        class="w-full h-auto group-hover:scale-105 transition-transform duration-700 ease-out"
+                        class="w-full h-auto"
                     />
                 </a>
             </div>
@@ -55,7 +55,7 @@ const hashtagIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
     }
     <article class="grid grid-cols-4 gap-4 lg:gap-8">
         <a
-            class="col-span-4 lg:col-span-3 group relative flex flex-col gap-6 items-start lg:bg-transparent bg-theme-bg-secondary/30 rounded-3xl p-8 lg:p-0"
+            class="col-span-4 lg:col-span-3 relative flex flex-col gap-6 items-start group lg:bg-transparent bg-theme-bg-secondary/30 rounded-3xl p-8 lg:p-0"
             href={`/blog/post/${post.slug}/`}
             data-astro-prefetch
         >

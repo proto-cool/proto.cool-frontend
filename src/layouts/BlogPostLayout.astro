@@ -97,7 +97,7 @@ const clockIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
                 <!-- author -->
                 <div class="mx-auto lg:mx-0 flex items-center justify-self-end order-3 description">
                     by
-                    <figure class="size-6 overflow-hidden rounded-full mx-2">
+                    <figure class="img-tint size-6 overflow-hidden rounded-full mx-2">
                         <Image
                             src={getImageSrc(SiteConfig.authorPhoto!.url!)}
                             alt=`${SiteConfig.authorName} avatar`
@@ -115,13 +115,13 @@ const clockIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
             <!-- blog post main image -->
             {
                 hasHeroImage && (
-                    <div class="mt-12 overflow-hidden">
+                    <div class="img-tint-saturated mt-12 rounded-3xl overflow-hidden">
                         <Image
                             src={heroImageSrc}
                             alt={heroImageMedia?.alt ?? null}
                             width={heroImageMedia?.width ?? 1200}
                             height={heroImageMedia?.height ?? 800}
-                            class="object-cover rounded-3xl"
+                            class="object-cover"
                             loading="eager"
                         />
                     </div>

@@ -29,13 +29,15 @@ const hero = await getHeroContent();
     </div>
     {
         SiteConfig.authorPhoto?.url ? (
-            <Image
-                class="aspect-square rounded-3xl shadow-md size-[240px]"
-                width={512}
-                height={512}
-                src={getImageSrc(SiteConfig.authorPhoto.url)}
-                alt={`$${SiteConfig.authorName} profile picture`}
-            />
+            <div class="img-tint rounded-3xl shrink-0 shadow-md">
+                <Image
+                    class="aspect-square size-[240px]"
+                    width={512}
+                    height={512}
+                    src={getImageSrc(SiteConfig.authorPhoto.url)}
+                    alt={`$${SiteConfig.authorName} profile picture`}
+                />
+            </div>
         ) : null
     }
 </section>

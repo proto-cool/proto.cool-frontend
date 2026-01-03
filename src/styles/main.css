@@ -56,6 +56,30 @@
     @apply mx-auto px-4 md:px-8 lg:px-16;
 }
 
+@utility img-tint {
+    @apply relative overflow-hidden;
+    &::after {
+        content: "";
+        @apply absolute inset-0 pointer-events-none;
+        background: radial-gradient(circle at 0% 0%, var(--color-theme-color-primary) 0%, transparent 80%);
+        mix-blend-mode: overlay;
+        opacity: 0.6;
+    }
+}
+
+@utility img-tint-saturated {
+    @apply relative overflow-hidden;
+    &::after {
+        content: "";
+        @apply absolute inset-0 pointer-events-none;
+        background: 
+            radial-gradient(circle at 0% 0%, var(--color-theme-color-primary) 0%, transparent 90%),
+            radial-gradient(circle at 100% 100%, var(--color-theme-color-secondary) 0%, transparent 70%);
+        mix-blend-mode: overlay;
+        opacity: 0.8;
+    }
+}
+
 /* Core theme styles */
 @layer base {
     :root {
