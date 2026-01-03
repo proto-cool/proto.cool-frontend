@@ -102,7 +102,7 @@ const generateOGImage = async ({
                             margin: "32px 0",
                             maxHeight: "314px",
                             backgroundColor: colors.base["800"],
-                            borderRadius: "36px",
+                            borderRadius: "64px",
                             display: "flex",
                             flexDirection: "column",
                             justifyContent: "center",
@@ -110,6 +110,7 @@ const generateOGImage = async ({
                             textAlign: "center",
                             padding: "32px",
                             position: "relative",
+                            overflow: "hidden",
                         },
                         children: [
                             hasImage
@@ -127,7 +128,7 @@ const generateOGImage = async ({
                                               backgroundRepeat: "no-repeat",
                                               backgroundSize: `${ogBGWidth}px ${ogBGHeight}px`,
                                               opacity: "0.1",
-                                              borderRadius: "36px",
+                                              borderRadius: "64px",
                                           },
                                       },
                                   }
@@ -139,7 +140,7 @@ const generateOGImage = async ({
                                         fontSize: "72px",
                                         marginTop: "-8px",
                                         marginBottom: "8px",
-                                        fontWeight: "600",
+                                        fontWeight: "500",
                                         textWrap: "balance",
                                         lineHeight: "1.1",
                                     },
@@ -180,8 +181,8 @@ const generateOGImage = async ({
                                         display: "flex",
                                         fontSize: "32px",
                                         gap: "8px",
-                                        borderRadius: "12px",
-                                        padding: "8px 16px",
+                                        borderRadius: "999px",
+                                        padding: "8px 24px",
                                         backgroundColor: colors.base["800"],
                                         color: colors.base["400"],
                                     },
@@ -218,7 +219,7 @@ const generateOGImage = async ({
                                             type: "span",
                                             props: {
                                                 style: {
-                                                    fontWeight: "600",
+                                                    fontWeight: "500",
                                                 },
                                                 children: SiteConfig.authorName,
                                             },
