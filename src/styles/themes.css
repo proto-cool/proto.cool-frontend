@@ -1,0 +1,60 @@
+@layer base {
+    :root {
+        --color-bg-secondary: color-mix(in srgb, var(--color-bg-primary), var(--color-fg-primary) 5%);
+        --color-bg-tertiary: color-mix(in srgb, var(--color-bg-primary), var(--color-fg-primary) 10%);
+
+        --color-fg-secondary: color-mix(in srgb, var(--color-fg-primary), transparent 25%);
+        --color-fg-tertiary: color-mix(in srgb, var(--color-fg-primary), transparent 50%);
+
+        --color-secondary: color-mix(in srgb, var(--color-primary), var(--color-bg-primary) 15%);
+        --color-tertiary: color-mix(in srgb, var(--color-primary), var(--color-fg-primary) 15%);
+    }
+
+    :root[data-theme="lime"], [data-theme="lime"] {
+        --color-bg-primary: #f4f4f5;
+        --color-fg-primary: #3f3f46;
+        --color-primary: #57a90a;
+    }
+
+    :root[data-theme="obsidian"], [data-theme="obsidian"] {
+        --color-bg-primary: #18181b;
+        --color-fg-primary: #e4e4e7;
+        --color-primary: #6dd40c;
+    }
+
+    :root[data-theme="nordic"], [data-theme="nordic"] {
+        --color-bg-primary: #f8fafc;
+        --color-fg-primary: #334155;
+        --color-primary: #0284c7;
+    }
+
+    :root[data-theme="latte"], [data-theme="latte"] {
+        --color-bg-primary: #fffaf3;
+        --color-fg-primary: #57534e;
+        --color-primary: #a85400;
+    }
+
+    :root[data-theme="abyss"], [data-theme="abyss"] {
+        --color-bg-primary: #0b1120;
+        --color-fg-primary: #f1f5f9;
+        --color-primary: #38bdf8;
+    }
+
+    :root[data-theme="everglade"], [data-theme="everglade"] {
+        --color-bg-primary: #0a1a12;
+        --color-fg-primary: #e0f2f1;
+        --color-primary: #34d399;
+    }
+
+    :root[data-theme="ember"], [data-theme="ember"] {
+        --color-bg-primary: #1a1210;
+        --color-fg-primary: #fff7ed;
+        --color-primary: #fb923c;
+    }
+
+    :root[data-theme="void"], [data-theme="void"] {
+        --color-bg-primary: #000000;
+        --color-fg-primary: #ffffff;
+        --color-primary: #d4d4d8;
+    }
+}

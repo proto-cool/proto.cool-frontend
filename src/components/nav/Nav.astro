@@ -2,7 +2,7 @@
 import NavLink from "@components/nav/NavLink.astro";
 import Logo from "@components/logo/Logo.astro";
 import SiteConfig from "@/site.config";
-import ThemeButton from "@components/nav/buttons/ThemeButton.astro";
+import ThemePicker from "@components/nav/buttons/ThemePicker.astro";
 import NavMobile from "./NavMobile.astro";
 import MobileNavButton from "./buttons/MobileNavButton.astro";
 ---
@@ -11,7 +11,7 @@ import MobileNavButton from "./buttons/MobileNavButton.astro";
     @reference "@/styles/main.css";
 
     #nav {
-        @apply fixed left-0 top-0 z-40 flex w-full backdrop-blur flex flex-col;
+        @apply fixed left-0 top-0 z-40 flex w-full flex flex-col;
 
         height: var(--nav-total-height);
 
@@ -24,6 +24,10 @@ import MobileNavButton from "./buttons/MobileNavButton.astro";
         @variant lg {
             --nav-content-height: calc(var(--spacing) * 24);
         }
+    }
+
+    #nav-mask-container {
+        @apply absolute inset-0 z-10 backdrop-blur w-full h-full;
     }
 
     #nav[data-nav-state="closed"] {
@@ -45,11 +49,13 @@ import MobileNavButton from "./buttons/MobileNavButton.astro";
         --nav-total-height: 100vh;
 
         /* solid mask */
-        mask-image: linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
+        #nav-mask-container {
+            mask-image: linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
+        }
     }
 
-    #nav[data-nav-state="closed"],
-    #nav[data-nav-state="search"] {
+    #nav[data-nav-state="closed"] #nav-mask-container,
+    #nav[data-nav-state="search"] #nav-mask-container {
         /* Mask for gradient effect */
         mask-image: linear-gradient(
             rgba(0, 0, 0, 1) var(--nav-mask-height),
@@ -58,7 +64,7 @@ import MobileNavButton from "./buttons/MobileNavButton.astro";
         );
     }
 
-    #nav::before {
+    #nav-mask-container::before {
         content: "";
         @apply absolute inset-0 flex w-full h-full z-10 opacity-90;
         /* Background and filter styles */
@@ -66,7 +72,7 @@ import MobileNavButton from "./buttons/MobileNavButton.astro";
         background-color: var(--color-bg-primary);
     }
 
-    #nav[data-nav-state="closed"]::before {
+    #nav[data-nav-state="closed"] #nav-mask-container::before {
         /* Mask for gradient effect */
         mask-image: linear-gradient(
             rgba(0, 0, 0, 1) var(--nav-content-height),
@@ -74,7 +80,7 @@ import MobileNavButton from "./buttons/MobileNavButton.astro";
         );
     }
 
-    #nav[data-nav-state="search"]::before {
+    #nav[data-nav-state="search"] #nav-mask-container::before {
         /* Mask for gradient effect */
         mask-image: linear-gradient(
             rgba(0, 0, 0, 1) var(--nav-search-height),
@@ -82,7 +88,7 @@ import MobileNavButton from "./buttons/MobileNavButton.astro";
         );
     }
 
-    #nav[data-nav-state="mobile-open"]::before {
+    #nav[data-nav-state="mobile-open"] #nav-mask-container::before {
         mask-image: linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
     }
 
@@ -106,15 +112,16 @@ import MobileNavButton from "./buttons/MobileNavButton.astro";
 
 <header>
     <nav id="nav" aria-label="Navigation" data-nav-state="closed" class="group">
+        <div id="nav-mask-container"></div>
         <div id="nav-content">
             <Logo />
             <div class="flex items-center gap-x-4 md:gap-x-8 lg:hidden">
-                <ThemeButton />
+                <ThemePicker />
                 <MobileNavButton />
             </div>
             <div class="hidden lg:flex lg:gap-x-12">
                 {SiteConfig.navLinks.map((link) => <NavLink text={link.text} href={link.href} />)}
-                <ThemeButton />
+                <ThemePicker />
             </div>
         </div>
         <div

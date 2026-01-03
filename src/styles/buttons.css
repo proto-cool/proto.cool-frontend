@@ -1,29 +1,58 @@
-.button {
-    @apply flex items-center justify-center px-4 py-1.5 font-medium transition-colors duration-200 rounded-md;
-    @apply focus:outline-none focus:ring-offset-base-900;
-    @apply disabled:pointer-events-none;
-}
+@layer components {
+    .button {
+        @apply inline-flex items-center justify-center px-5 py-2 rounded-md font-medium transition-all duration-200 cursor-pointer select-none;
+        @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-theme-color-primary focus-visible:ring-offset-2 focus-visible:ring-offset-theme-bg-primary;
+        @apply active:scale-[0.98];
+        @apply disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100;
 
-.button.primary {
-    @apply relative bg-theme-color-primary text-base-800 font-cool;
-    @apply hover:bg-theme-color-tertiary hover:text-green-950;
-    @apply focus-visible:ring-2 focus-visible:bg-theme-color-primary focus-visible:ring-offset-2;
-}
+        &.disabled {
+            @apply opacity-50 pointer-events-none active:scale-100;
+        }
 
-.button.secondary {
-    @apply border-2 border-theme-bg-tertiary bg-transparent text-theme-fg-secondary;
-    @apply hover:border-theme-color-tertiary hover:text-theme-fg-tertiary;
-    @apply focus-visible:ring-2 focus-visible:ring-theme-color-tertiary focus-visible:ring-offset-2;
-}
+        & svg {
+            @apply transition-transform duration-200;
+        }
+    }
 
-.button.ghost {
-    @apply bg-transparent;
-    @apply hover:text-theme-color-primary;
-    @apply focus-visible:ring-2 focus-visible:ring-theme-color-primary focus-visible:ring-offset-2;
-}
+    /* Variant: Primary (Solid Brand) */
+    .button.primary {
+        @apply bg-theme-color-primary text-theme-bg-primary font-cool shadow-sm;
+        @apply hover:brightness-110 hover:shadow-md;
+    }
 
-.button.disabled {
-    @apply bg-theme-bg-secondary text-theme-fg-secondary;
-    @apply hover:cursor-not-allowed;
-    @apply focus-visible:ring-0;
+    /* Variant: Secondary (Solid Neutral) */
+    .button.secondary {
+        @apply bg-theme-bg-tertiary text-theme-fg-primary;
+        @apply hover:bg-theme-bg-secondary hover:shadow-sm;
+    }
+
+    /* Variant: Outline (Bordered) */
+    .button.outline {
+        @apply border-2 border-theme-bg-tertiary bg-transparent text-theme-fg-secondary;
+        @apply hover:border-theme-color-primary hover:text-theme-fg-primary;
+    }
+
+    /* Variant: Ghost (Transparent) */
+    .button.ghost {
+        @apply bg-transparent text-theme-fg-secondary;
+        @apply hover:bg-theme-bg-tertiary hover:text-theme-fg-primary;
+    }
+
+    /* Variant: Disabled (Generic) */
+    .button.disabled, .button:disabled {
+        @apply bg-theme-bg-tertiary text-theme-fg-tertiary cursor-not-allowed opacity-60;
+        @apply hover:bg-theme-bg-tertiary hover:text-theme-fg-tertiary;
+        @apply active:scale-100;
+        @apply focus-visible:ring-0 shadow-none;
+    }
+
+    /* Size: Small */
+    .button.sm {
+        @apply px-3 py-1 text-sm rounded;
+    }
+
+    /* Size: Large */
+    .button.lg {
+        @apply px-8 py-3 text-lg rounded-lg;
+    }
 }

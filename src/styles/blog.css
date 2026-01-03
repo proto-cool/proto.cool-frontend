@@ -31,8 +31,8 @@
     @apply mt-8;
 }
 
-:root[data-theme="dark"] .shiki,
-:root[data-theme="dark"] .shiki span {
+:root:where([data-theme="obsidian"], [data-theme="abyss"], [data-theme="everglade"], [data-theme="ember"], [data-theme="void"]) .shiki,
+:root:where([data-theme="obsidian"], [data-theme="abyss"], [data-theme="everglade"], [data-theme="ember"], [data-theme="void"]) .shiki span {
     color: var(--shiki-dark) !important;
     background-color: var(--shiki-dark-bg) !important;
     /* Optional, if you also want font styles */

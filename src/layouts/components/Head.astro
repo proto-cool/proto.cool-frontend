@@ -54,26 +54,26 @@ const isProd = import.meta.env.PROD;
 
     <script is:inline>
         const getTheme = () => {
-            if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-                return localStorage.getItem("theme") ?? "dark";
-            }
+            const theme = typeof localStorage !== "undefined" && localStorage.getItem("theme");
+            // Migration for old theme names
+            if (theme === "dark") return "obsidian";
+            if (theme === "light") return "porcelain";
+            if (theme === "midnight") return "abyss";
+            if (theme === "forest") return "everglade";
+            if (theme === "sunset") return "ember";
+            if (theme) return theme;
+
             if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-                return "dark";
+                return "obsidian";
             }
-            return "light";
+            return "porcelain";
         };
 
         window.getTheme = getTheme;
 
         (() => {
             const theme = getTheme();
-
-            if (theme === "light") {
-                document.documentElement.setAttribute("data-theme", "light");
-            } else {
-                document.documentElement.setAttribute("data-theme", "dark");
-            }
-
+            document.documentElement.setAttribute("data-theme", theme);
             window.localStorage.setItem("theme", theme);
         })();
     </script>
