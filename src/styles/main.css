@@ -139,6 +139,15 @@
         }
     }
 
+    @keyframes shimmer {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(100%);
+        }
+    }
+
     .text-gradient {
         @apply bg-clip-text text-transparent bg-[length:200%_auto] animate-[gradient-flow_8s_linear_infinite];
         background-image: linear-gradient(
