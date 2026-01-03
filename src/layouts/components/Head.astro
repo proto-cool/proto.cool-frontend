@@ -82,12 +82,17 @@ const isProd = import.meta.env.PROD;
     <script>
         import cascade from "@proto-cool/cascade";
 
-        document.addEventListener("astro:after-swap", function () {
+        const shouldAnimate = () => {
             const body = document.querySelector("body");
-            if (body!.classList.contains("use-animations")) cascade.enable();
+            const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            return body!.classList.contains("use-animations") && !isReducedMotion;
+        };
+
+        document.addEventListener("astro:after-swap", function () {
+            if (shouldAnimate()) cascade.enable();
         });
-        const body = document.querySelector("body");
-        if (body!.classList.contains("use-animations")) cascade.enable();
+        
+        if (shouldAnimate()) cascade.enable();
     </script>
 
     {SiteConfig.codeInjection && isProd && <Fragment set:html={SiteConfig.codeInjection} />}

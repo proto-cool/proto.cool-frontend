@@ -62,7 +62,7 @@
         content: "";
         @apply absolute inset-0 pointer-events-none;
         background: radial-gradient(circle at 0% 0%, var(--color-theme-color-primary) 0%, transparent 80%);
-        mix-blend-mode: overlay;
+        mix-blend-mode: soft-light;
         opacity: 0.6;
     }
 }
@@ -75,7 +75,7 @@
         background: 
             radial-gradient(circle at 0% 0%, var(--color-theme-color-primary) 0%, transparent 80%),
             radial-gradient(circle at 100% 100%, var(--color-theme-color-secondary) 0%, transparent 60%);
-        mix-blend-mode: overlay;
+        mix-blend-mode: soft-light;
         opacity: 0.7;
     }
 }
@@ -95,8 +95,22 @@
         @apply overflow-hidden;
     }
 
-    body * {
-        @apply transition-colors transition-shadow duration-200;
+    body {
+        @apply transition-colors duration-300;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        ::before,
+        ::after {
+            animation-delay: -1ms !important;
+            animation-duration: 1ms !important;
+            animation-iteration-count: 1 !important;
+            background-attachment: initial !important;
+            scroll-behavior: auto !important;
+            transition-duration: 0s !important;
+            transition-delay: 0s !important;
+        }
     }
 }
 
@@ -159,8 +173,27 @@
         }
     }
 
+    @keyframes pulse-slow {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.3;
+        }
+    }
+
+    @keyframes ping-slow {
+        75%, 100% {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+
     .text-gradient {
-        @apply bg-clip-text text-transparent bg-[length:200%_auto] animate-[gradient-flow_8s_linear_infinite];
+        @apply bg-clip-text text-transparent bg-[length:200%_auto] animate-[gradient-flow_30s_linear_infinite];
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+        }
         background-image: linear-gradient(
             45deg,
             var(--color-primary) 0%,

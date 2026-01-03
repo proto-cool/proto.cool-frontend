@@ -17,8 +17,7 @@ const hero = await getHeroContent();
 >
     <!-- Background Decorative Glows -->
     <div 
-        class="absolute top-1/2 -left-24 w-64 md:w-96 h-64 md:h-96 bg-theme-color-primary/10 blur-[100px] rounded-full -z-10 animate-pulse"
-        style="animation-duration: 10s;"
+        class="absolute top-1/2 -left-24 w-64 md:w-96 h-64 md:h-96 bg-theme-color-primary/10 blur-3xl rounded-full -z-10 motion-safe:animate-[pulse-slow_10s_ease-in-out_infinite]"
     ></div>
 
     <div
@@ -43,7 +42,7 @@ const hero = await getHeroContent();
         SiteConfig.authorPhoto?.url ? (
             <div class="relative group shrink-0" data-cascade="fadeIn" data-cascade-delay="0.4">
                 <!-- Decorative rotating ring -->
-                <div class="absolute -inset-4 border-2 border-dashed border-theme-color-primary/20 rounded-full animate-[spin_42s_linear_infinite] group-hover:border-theme-color-primary/40 transition-colors duration-700"></div>
+                <div class="absolute -inset-4 border-2 border-dashed border-theme-color-primary/20 rounded-full group-hover:border-theme-color-primary/40 transition-colors duration-700 motion-safe:animate-[spin_60s_linear_infinite]"></div>
                 
                 <!-- Decorative Glow behind image -->
                 <div class="absolute -inset-2 bg-theme-color-primary/10 rounded-full blur-2xl group-hover:bg-theme-color-primary/20 transition-all duration-700"></div>
@@ -63,7 +62,7 @@ const hero = await getHeroContent();
                 <!-- Available for projects status -->
                 <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2.5 text-[10px] lowercase tracking-wider text-theme-fg-secondary font-medium px-3 py-1.5 bg-theme-bg-primary border border-theme-bg-tertiary rounded-full shadow-lg z-20 whitespace-nowrap">
                     <span class="relative flex h-1.5 w-1.5">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-theme-color-primary opacity-75"></span>
+                        <span class="motion-safe:animate-[ping-slow_3s_infinite] absolute inline-flex h-full w-full rounded-full bg-theme-color-primary opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-theme-color-primary"></span>
                     </span>
                     <span>available for new projects</span>
@@ -73,7 +72,7 @@ const hero = await getHeroContent();
     }
 
     <!-- Scroll indicator caret -->
-    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-1 text-theme-fg-tertiary/40 animate-[scroll-indicator_3s_ease-in-out_infinite]">
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-1 text-theme-fg-tertiary/40 animate-[scroll-indicator_5s_ease-in-out_infinite]">
         <span class="text-[10px] lowercase tracking-widest font-medium">scroll</span>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-4">
             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />

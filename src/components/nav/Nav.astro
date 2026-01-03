@@ -36,10 +36,10 @@ import MobileNavButton from "./buttons/MobileNavButton.astro";
     #nav {
         @apply fixed top-0 left-0 z-40 flex w-full h-dvh flex-col pointer-events-none;
         transition:
-            --nav-height 150ms ease-in-out,
-            --nav-content-height 150ms ease-in-out,
-            --nav-mask-height 150ms ease-in-out,
-            --nav-fade-distance 150ms ease-in-out;
+            --nav-height 300ms ease-in-out,
+            --nav-content-height 300ms ease-in-out,
+            --nav-mask-height 300ms ease-in-out,
+            --nav-fade-distance 300ms ease-in-out;
 
         /* Default configuration: "closed" state */
         --nav-content-height: theme(spacing.16);
@@ -123,7 +123,7 @@ import MobileNavButton from "./buttons/MobileNavButton.astro";
     /* Mobile Links Container */
     #nav-mobile-links {
         @apply container flex-col gap-4 items-start py-6 z-20 pointer-events-auto;
-        @apply flex opacity-0 -translate-y-4 transition-all duration-150 ease-out;
+        @apply flex opacity-0 -translate-y-4 transition-all duration-300 ease-out;
         will-change: transform, opacity;
         @apply group-data-[nav-state="closed"]:hidden;
         @apply group-data-[nav-state="mobile-open"]:opacity-100 group-data-[nav-state="mobile-open"]:translate-y-0 group-data-[nav-state="mobile-open"]:pointer-events-auto;

@@ -8,17 +8,13 @@ const noiseImageSrc = await getImage({ src: noiseImage });
 
 <style>
     .noise-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        position: fixed;
+        inset: 0;
         z-index: 999;
         opacity: 0.2;
         mix-blend-mode: soft-light;
         background-size: 96px 96px;
         background-repeat: repeat;
-        background-blend-mode: soft-light;
         pointer-events: none;
     }
 </style>

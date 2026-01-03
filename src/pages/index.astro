@@ -58,14 +58,14 @@ const posts = await getNPosts(5);
                                 class="h-full bg-theme-color-primary rounded-full relative overflow-hidden" 
                                 style="width: 85%"
                             >
-                                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full motion-safe:animate-[shimmer_3s_infinite]"></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="flex items-center gap-3 text-xs lowercase font-medium text-theme-fg-secondary bg-theme-bg-tertiary/30 w-fit px-3 py-1.5 rounded-full border border-theme-bg-tertiary/50">
                         <span class="relative flex h-2 w-2">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-theme-color-primary opacity-75"></span>
+                            <span class="motion-safe:animate-[ping-slow_3s_infinite] absolute inline-flex h-full w-full rounded-full bg-theme-color-primary opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-theme-color-primary"></span>
                         </span>
                         <span>latest: bikeshedding</span>
