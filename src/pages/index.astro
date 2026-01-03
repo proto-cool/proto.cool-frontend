@@ -38,14 +38,43 @@ const posts = await getNPosts(5);
         <!--Tag content & sidebar-->
         <aside class="col-span-3 mt-8 lg:col-span-1 lg:mt-0 flex flex-col gap-8">
             <Card
-                title="featured"
-                icon={`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 text-theme-color-primary"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" /></svg>`}
+                title="currently building"
+                icon={`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 text-theme-color-primary"><path fill-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clip-rule="evenodd" /></svg>`}
                 class="bg-theme-bg-secondary border border-theme-bg-tertiary"
             >
-                <p class="text-sm description">coming soon &mdash; 👷🚧</p>
-                <Button variant="primary" arrow="right" href="/blog/1/" prefetch class="w-fit"
-                    >see more</Button
-                >
+                <div class="flex flex-col gap-5">
+                    <div>
+                        <h4 class="text-lg font-medium lowercase text-theme-fg-primary">proto.cool v2.0</h4>
+                        <p class="text-sm description mt-1">building a fancy new personal site with astro & payload cms.</p>
+                    </div>
+
+                    <div class="space-y-2.5">
+                        <div class="flex justify-between text-[10px] lowercase tracking-widest font-bold text-theme-fg-tertiary">
+                            <span>progress</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="h-2 w-full bg-theme-bg-tertiary rounded-full overflow-hidden p-0.5">
+                            <div 
+                                class="h-full bg-theme-color-primary rounded-full relative overflow-hidden" 
+                                style="width: 85%"
+                            >
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 text-xs lowercase font-medium text-theme-fg-secondary bg-theme-bg-tertiary/30 w-fit px-3 py-1.5 rounded-full border border-theme-bg-tertiary/50">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-theme-color-primary opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-theme-color-primary"></span>
+                        </span>
+                        <span>latest: bikeshedding</span>
+                    </div>
+
+                    <Button variant="primary" size="sm" arrow="right" href="https://github.com/proto-cool/proto.cool-frontend/commits/main/" class="w-fit">
+                        view log
+                    </Button>
+                </div>
             </Card>
             <Card
                 title="post tags"

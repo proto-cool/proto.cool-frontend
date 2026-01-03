@@ -73,17 +73,17 @@
         content: "";
         @apply absolute inset-0 pointer-events-none;
         background: 
-            radial-gradient(circle at 0% 0%, var(--color-theme-color-primary) 0%, transparent 90%),
-            radial-gradient(circle at 100% 100%, var(--color-theme-color-secondary) 0%, transparent 70%);
+            radial-gradient(circle at 0% 0%, var(--color-theme-color-primary) 0%, transparent 80%),
+            radial-gradient(circle at 100% 100%, var(--color-theme-color-secondary) 0%, transparent 60%);
         mix-blend-mode: overlay;
-        opacity: 0.8;
+        opacity: 0.7;
     }
 }
 
 /* Core theme styles */
 @layer base {
     :root {
-        @apply font-sans text-lg leading-[1.8rem];
+        @apply font-sans text-lg leading-loose;
         @apply text-theme-fg-primary bg-theme-bg-primary;
         @apply scroll-smooth;
         scrollbar-gutter: stable;
@@ -136,6 +136,15 @@
         }
         to {
             background-position: 200% 0%;
+        }
+    }
+
+    @keyframes shimmer {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(100%);
         }
     }
 
