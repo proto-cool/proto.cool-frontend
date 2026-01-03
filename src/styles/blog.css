@@ -1,7 +1,8 @@
 @reference "./main.css";
 
-#blog-post-content p > code {
-    @apply text-theme-fg-tertiary bg-theme-bg-tertiary px-1 py-0.5 align-middle text-sm rounded;
+#blog-post-content p > code,
+#blog-post-content li > code {
+    @apply text-theme-fg-tertiary bg-theme-bg-tertiary px-1.5 py-0.5 rounded text-[0.9em] inline;
 }
 
 #blog-post-content ol {
@@ -17,7 +18,7 @@
 }
 
 #blog-post-content mark {
-    @apply bg-theme-color-primary;
+    @apply bg-theme-color-primary px-1.5 py-0.5 rounded text-[0.9em] inline-flex items-center align-middle leading-none mx-0.5;
 }
 
 #blog-post .toc-current {
@@ -31,41 +32,52 @@
     @apply mt-8;
 }
 
-:root:where([data-theme="obsidian"], [data-theme="abyss"], [data-theme="everglade"], [data-theme="ember"], [data-theme="void"]) .shiki,
-:root:where([data-theme="obsidian"], [data-theme="abyss"], [data-theme="everglade"], [data-theme="ember"], [data-theme="void"]) .shiki span {
-    color: var(--shiki-dark) !important;
-    background-color: var(--shiki-dark-bg) !important;
-    /* Optional, if you also want font styles */
-    font-style: var(--shiki-dark-font-style) !important;
-    font-weight: var(--shiki-dark-font-weight) !important;
-    text-decoration: var(--shiki-dark-text-decoration) !important;
-}
 
 #blog-post-content .code-block {
-    @apply bg-theme-bg-tertiary rounded-lg p-2;
+    @apply my-8;
 }
 
 #blog-post-content .code-block pre {
-    @apply px-3 py-2 rounded-lg text-sm;
+    @apply p-0 m-0 text-sm leading-relaxed;
+}
+
+#blog-post-content .shiki {
+    @apply overflow-x-auto;
+    display: grid;
+}
+
+@variant dark {
+    #blog-post-content .shiki {
+        background-color: var(--shiki-dark-bg) !important;
+    }
+    #blog-post-content .shiki span {
+        color: var(--shiki-dark) !important;
+    }
 }
 
 #blog-post-content .shiki code {
     counter-reset: step;
     counter-increment: step 0;
+    @apply grid min-w-full w-fit py-4;
+    background-color: inherit;
+}
+
+#blog-post-content .shiki span {
+    background-color: transparent !important;
+}
+
+#blog-post-content .shiki code .line {
+    @apply px-4 border-l-2 border-transparent bg-transparent;
 }
 
 #blog-post-content .shiki code .line::before {
     content: counter(step);
     counter-increment: step;
-    @apply w-6 mr-4 text-right text-theme-fg-secondary inline-block opacity-50;
+    @apply w-6 mr-4 text-right text-theme-fg-tertiary inline-block opacity-40 select-none;
 }
 
-#blog-post-content pre.shiki {
-    @apply overflow-x-auto;
-}
-
-#blog-post-content pre.shiki code {
-    @apply block;
+#blog-post-content .shiki code .line.highlight {
+    @apply bg-theme-color-primary/10 border-theme-color-primary;
 }
 
 #blog-post-content h1, #blog-post-content h2, #blog-post-content h3, #blog-post-content h4 {
