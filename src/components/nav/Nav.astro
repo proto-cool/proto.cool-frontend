@@ -73,25 +73,6 @@ import MobileNavButton from "./buttons/MobileNavButton.astro";
         }
     }
 
-    /* Restore on hover */
-    @media (hover: hover) {
-        #nav:hover {
-            --nav-content-height: theme(spacing.16);
-
-            @variant md {
-                --nav-content-height: theme(spacing.20);
-            }
-
-            @variant lg {
-                --nav-content-height: theme(spacing.24);
-            }
-
-            & :where(.font-cool) {
-                @apply text-3xl;
-            }
-        }
-    }
-
     /* State: Search */
     #nav[data-nav-state="search"] {
         --nav-mask-height: 75vh;

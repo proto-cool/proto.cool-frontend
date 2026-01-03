@@ -152,7 +152,7 @@ const SiteConfig: SiteConfigProps = {
             preview: {
                 bg: "#000000",
                 fg: "#ffffff",
-                accent: "#d4d4d8",
+                accent: "#b4b4ba",
             },
         },
     ],

@@ -33,7 +33,7 @@ const themes = SiteConfig.themes;
     </button>
 
     <div
-        class="absolute right-0 z-50 mt-2 w-36 origin-top-right rounded-md bg-theme-bg-primary shadow-lg ring-2 ring-black/10 focus:outline-none transition-all duration-150 opacity-0 scale-95 pointer-events-none"
+        class="absolute right-0 z-50 mt-2 w-40 md:w-36 origin-top-right rounded-md bg-theme-bg-primary shadow-lg ring-2 ring-black/10 focus:outline-none transition-all duration-150 opacity-0 scale-95 pointer-events-none"
         id="theme-menu"
         role="menu"
         aria-orientation="vertical"
@@ -44,7 +44,7 @@ const themes = SiteConfig.themes;
             {
                 themes.map((theme) => (
                     <button
-                        class="theme-option flex items-center justify-between w-full px-4 py-2 text-sm text-theme-fg-primary hover:bg-theme-bg-secondary transition-colors hover:cursor-pointer"
+                        class="theme-option flex items-center justify-between w-full px-4 py-2 text-base md:text-sm text-theme-fg-primary hover:bg-theme-bg-secondary transition-colors hover:cursor-pointer"
                         role="menuitem"
                         data-theme-name={theme.name}
                     >

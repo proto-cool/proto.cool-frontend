@@ -69,8 +69,8 @@
     :root[data-theme="void"], [data-theme="void"] {
         --color-bg-primary: #000000;
         --color-fg-primary: #ffffff;
-        --color-primary: #d4d4d8;
-        --color-secondary: #71717a;
-        --color-tertiary: #a1a1aa;
+        --color-primary: #b4b4ba;
+        --color-secondary: #e8e8f0;
+        --color-tertiary: #96969e;
     }
 }
