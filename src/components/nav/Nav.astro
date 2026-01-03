@@ -56,23 +56,6 @@ import MobileNavButton from "./buttons/MobileNavButton.astro";
         }
     }
 
-    /* Squished state */
-    #nav[data-nav-squished="true"] {
-        --nav-content-height: theme(spacing.12);
-
-        @variant md {
-            --nav-content-height: theme(spacing.14);
-        }
-
-        @variant lg {
-            --nav-content-height: theme(spacing.16);
-        }
-
-        & :where(.font-cool) {
-            @apply text-2xl;
-        }
-    }
-
     /* State: Search */
     #nav[data-nav-state="search"] {
         --nav-mask-height: 75vh;
@@ -178,29 +161,3 @@ import MobileNavButton from "./buttons/MobileNavButton.astro";
         </div>
     </nav>
 </header>
-
-<script>
-    const initNav = () => {
-        const nav = document.getElementById("nav");
-
-        const updateNavState = () => {
-            if (nav?.getAttribute("data-nav-state") === "mobile-open") return;
-            
-            const currentScrollY = window.scrollY;
-            const isSquished = currentScrollY > 225;
-            const currentStatus = nav?.getAttribute("data-nav-squished");
-
-            if (currentStatus !== isSquished.toString()) {
-                nav?.setAttribute("data-nav-squished", isSquished.toString());
-            }
-        };
-
-        // Initial check
-        updateNavState();
-
-        window.addEventListener("scroll", updateNavState, { passive: true });
-    };
-
-    // Initialize on first load and re-initialize on view transition
-    document.addEventListener("astro:page-load", initNav);
-</script>

@@ -85,7 +85,7 @@ const SiteConfig: SiteConfigProps = {
     themes: [
         {
             name: "lime",
-            label: "Lime",
+            label: "lime",
             preview: {
                 bg: "#f4f4f5",
                 fg: "#3f3f46",
@@ -94,7 +94,7 @@ const SiteConfig: SiteConfigProps = {
         },
         {
             name: "obsidian",
-            label: "Obsidian",
+            label: "obsidian",
             preview: {
                 bg: "#18181b",
                 fg: "#e4e4e7",
@@ -103,7 +103,7 @@ const SiteConfig: SiteConfigProps = {
         },
         {
             name: "nordic",
-            label: "Nordic",
+            label: "nordic",
             preview: {
                 bg: "#f8fafc",
                 fg: "#334155",
@@ -112,7 +112,7 @@ const SiteConfig: SiteConfigProps = {
         },
         {
             name: "abyss",
-            label: "Abyss",
+            label: "abyss",
             preview: {
                 bg: "#0b1120",
                 fg: "#f1f5f9",
@@ -121,7 +121,7 @@ const SiteConfig: SiteConfigProps = {
         },
         {
             name: "everglade",
-            label: "Everglade",
+            label: "everglade",
             preview: {
                 bg: "#0a1a12",
                 fg: "#e0f2f1",
@@ -130,7 +130,7 @@ const SiteConfig: SiteConfigProps = {
         },
         {
             name: "latte",
-            label: "Latte",
+            label: "latte",
             preview: {
                 bg: "#fffaf3",
                 fg: "#57534e",
@@ -139,7 +139,7 @@ const SiteConfig: SiteConfigProps = {
         },
         {
             name: "ember",
-            label: "Ember",
+            label: "ember",
             preview: {
                 bg: "#1a1210",
                 fg: "#fff7ed",
@@ -148,7 +148,7 @@ const SiteConfig: SiteConfigProps = {
         },
         {
             name: "void",
-            label: "Void",
+            label: "void",
             preview: {
                 bg: "#000000",
                 fg: "#ffffff",

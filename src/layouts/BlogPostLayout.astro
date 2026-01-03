@@ -66,26 +66,32 @@ const clockIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
 
                 <!-- metadata -->
                 <div
-                    class="flex flex-row lg:flex-col items-start order-1 gap-x-4 gap-y-2 lg:gap-x-2 justify-center border-l-0 lg:border-l-2 border-theme-bg-tertiary pl-0 lg:pl-4 flex-wrap"
+                    class="flex flex-row lg:flex-col items-start order-1 gap-x-4 gap-y-3 justify-center border-l-0 lg:border-l-2 border-theme-bg-tertiary pl-0 lg:pl-4 flex-wrap"
                 >
                     <!--date-->
-                    <div class="flex items-center lg:-mt-2 description">
-                        <Fragment set:html={calendarIcon} />
-                        <time datetime={createdAt} class="whitespace-nowrap ml-1">
+                    <div class="flex items-center lg:-mt-2 description cursor-default">
+                        <span class="text-theme-fg-tertiary">
+                            <Fragment set:html={calendarIcon} />
+                        </span>
+                        <time datetime={createdAt} class="whitespace-nowrap ml-2">
                             {formatDate(createdAt)}
                         </time>
                     </div>
 
                     <!--reading time-->
-                    <div class="flex items-center description">
-                        <Fragment set:html={clockIcon} />
-                        <span class="whitespace-nowrap ml-1">
+                    <div class="flex items-center description cursor-default">
+                        <span class="text-theme-fg-tertiary">
+                            <Fragment set:html={clockIcon} />
+                        </span>
+                        <span class="whitespace-nowrap ml-2">
                             {post.readTime}
                         </span>
                     </div>
 
                     <!-- tag -->
-                    <Tag tag={tag} />
+                    <div>
+                        <Tag tag={tag} size="small" />
+                    </div>
                 </div>
 
                 <!-- author -->
@@ -115,7 +121,7 @@ const clockIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
                             alt={heroImageMedia?.alt ?? null}
                             width={heroImageMedia?.width ?? 1200}
                             height={heroImageMedia?.height ?? 800}
-                            class="object-cover rounded-2xl"
+                            class="object-cover rounded-3xl"
                             loading="eager"
                         />
                     </div>
@@ -124,8 +130,8 @@ const clockIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
         </div>
 
         <!-- article content -->
-        <div class:list={["w-full", hasHeroImage ? "mt-12" : "mt-24"]}>
-            <div class="mx-auto max-w-2xl gap-8 lg:grid lg:max-w-none lg:grid-cols-3">
+        <div class:list={["w-full", hasHeroImage ? "mt-16" : "mt-24"]}>
+            <div class="mx-auto max-w-2xl gap-12 lg:grid lg:max-w-none lg:grid-cols-3">
                 <!--Content-->
                 <div
                     class:list={[

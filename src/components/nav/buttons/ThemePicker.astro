@@ -7,12 +7,12 @@ const themes = SiteConfig.themes;
 <div class="relative inline-block text-left -ml-4" data-theme-picker>
     <button
         type="button"
-        class="flex items-center justify-center gap-1 px-1 h-8 rounded-md hover:bg-theme-bg-secondary transition-colors hover:cursor-pointer"
+        class="flex items-center justify-center gap-1 px-1 h-8 rounded-full hover:bg-theme-bg-secondary transition-colors hover:cursor-pointer"
         id="theme-menu-button"
         aria-expanded="false"
         aria-haspopup="true"
     >
-        <div class="theme-preview-icon w-6 h-6 border-2 border-theme-fg-tertiary/20 overflow-hidden flex flex-shrink-0 rounded">
+        <div class="theme-preview-icon w-6 h-6 border-2 border-theme-fg-tertiary/20 overflow-hidden flex flex-shrink-0 rounded-full">
             <div class="w-1/2 h-full bg-theme-bg-secondary"></div>
             <div class="w-1/2 h-full flex flex-col">
                 <div class="h-1/2 w-full bg-theme-fg-primary"></div>
@@ -33,7 +33,7 @@ const themes = SiteConfig.themes;
     </button>
 
     <div
-        class="absolute right-0 z-50 mt-2 w-40 md:w-36 origin-top-right rounded-md bg-theme-bg-primary shadow-lg ring-2 ring-black/10 focus:outline-none transition-all duration-150 opacity-0 scale-95 pointer-events-none"
+        class="absolute right-0 z-50 mt-2 w-40 md:w-36 origin-top-right rounded-2xl bg-theme-bg-primary shadow-xl border border-theme-bg-tertiary overflow-hidden transition-all duration-150 opacity-0 scale-95 pointer-events-none"
         id="theme-menu"
         role="menu"
         aria-orientation="vertical"
@@ -49,7 +49,7 @@ const themes = SiteConfig.themes;
                         data-theme-name={theme.name}
                     >
                         <span class="theme-label">{theme.label}</span>
-                        <div class="w-4 h-4 border-2 border-theme-fg-tertiary/20 overflow-hidden flex flex-shrink-0 rounded-sm">
+                        <div class="w-4 h-4 border-2 border-theme-fg-tertiary/20 overflow-hidden flex flex-shrink-0 rounded-full">
                             <div class="w-1/2 h-full" style={`background-color: ${theme.preview.bg}`} />
                             <div class="w-1/2 h-full flex flex-col">
                                 <div class="h-1/2 w-full" style={`background-color: ${theme.preview.fg}`} />

@@ -6,32 +6,32 @@ import Logo from "../logo/Logo.astro";
 
 <footer class="mt-24 pb-12 text-theme-fg-secondary">
     <div class="container">
-        <div class="relative border-t-2 border-theme-bg-tertiary pt-16">
-            <!-- Decorative line -->
+        <div class="relative bg-theme-bg-secondary/20 border border-theme-bg-tertiary rounded-[2.5rem] p-10 md:p-14 overflow-hidden">
+            <!-- Decorative corner glow -->
             <div
-                class="absolute -top-[2px] left-0 h-[2px] w-24 bg-theme-color-primary shadow-[0_0_10px_var(--color-primary)]"
+                class="absolute -top-12 -left-12 w-48 h-48 bg-theme-color-primary/5 blur-3xl rounded-full"
             >
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16 relative z-10">
                 <!-- Site Info -->
                 <div class="md:col-span-2 lg:col-span-6 flex flex-col gap-6 items-start">
                     <Logo />
                     <p class="text-base/relaxed max-w-md text-theme-fg-secondary">
                         {SiteConfig.description}
                     </p>
-                    <div class="flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-theme-fg-tertiary font-bold">
+                    <div class="flex items-center gap-3 text-xs lowercase tracking-wide text-theme-fg-tertiary font-medium">
                         <span class="relative flex h-2 w-2">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-theme-color-primary opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-theme-color-primary"></span>
                         </span>
-                        <span>Available for new projects</span>
+                        <span>available for new projects</span>
                     </div>
                 </div>
 
                 <!-- Navigation -->
                 <div class="md:col-span-1 lg:col-span-3 flex flex-col gap-4">
-                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-theme-fg-primary">
+                    <h3 class="text-xl font-medium lowercase text-theme-fg-primary">
                         Navigation
                     </h3>
                     <nav class="flex flex-col gap-3">
@@ -50,7 +50,7 @@ import Logo from "../logo/Logo.astro";
 
                 <!-- Social & Connect -->
                 <div class="md:col-span-1 lg:col-span-3 flex flex-col gap-4">
-                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-theme-fg-primary">
+                    <h3 class="text-xl font-medium lowercase text-theme-fg-primary">
                         Connect
                     </h3>
                     <div class="flex flex-col gap-4">

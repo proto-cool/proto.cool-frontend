@@ -23,7 +23,7 @@ const { image, blockId, caption } = Astro.props as Props;
                 alt={image.alt}
                 width={image.width!}
                 height={image.height!}
-                class="w-full h-auto transition-transform duration-300 rounded-xl hover:scale-[1.02]"
+                class="w-full h-auto transition-transform duration-300 rounded-2xl hover:scale-[1.02]"
             />
         </label>
         {caption && <span class="description text-sm">{caption}</span>}

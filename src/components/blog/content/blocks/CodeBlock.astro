@@ -14,13 +14,13 @@ const highlightedCode = await generateCodeBlock(code, language, meta);
 ---
 
 <div
-    class="relative code-block group my-8 border border-theme-bg-tertiary rounded-lg overflow-hidden shadow-sm"
+    class="relative code-block group my-8 border border-theme-bg-tertiary rounded-2xl overflow-hidden shadow-sm"
     data-code={code}
 >
     <!-- Header -->
-    <div class="flex items-center justify-between px-4 py-2 bg-theme-bg-secondary border-b border-theme-bg-tertiary">
+    <div class="flex items-center justify-between px-6 py-3 bg-theme-bg-secondary border-b border-theme-bg-tertiary">
         <div class="flex items-center gap-2">
-            <span class="text-xs font-mono text-theme-fg-tertiary uppercase tracking-wider">
+            <span class="text-sm font-medium text-theme-fg-tertiary lowercase">
                 {language}
             </span>
             {
@@ -32,7 +32,7 @@ const highlightedCode = await generateCodeBlock(code, language, meta);
             }
         </div>
         <button
-            class="copy-button p-1.5 rounded-md text-theme-fg-tertiary hover:text-theme-fg-primary hover:bg-theme-bg-tertiary transition-all duration-200 active:scale-95"
+            class="copy-button p-1.5 rounded-full text-theme-fg-tertiary hover:text-theme-fg-primary hover:bg-theme-bg-tertiary transition-all duration-200 active:scale-95"
             aria-label="Copy code"
         >
             <svg

@@ -9,12 +9,13 @@ const tags = await getAllTags();
 
 interface Props {
     showCount?: boolean;
+    size?: "small" | "regular";
     rest?: any;
 }
 
-const { showCount = false, ...rest } = Astro.props as Props;
+const { showCount = false, size = "regular", ...rest } = Astro.props as Props;
 ---
 
-<div class="flex flex-wrap gap-3" {...rest}>
-    {tags.docs.map((tag) => <Tag {tag} {showCount} showActive class="border-none !px-1" />)}
+<div class="flex flex-wrap gap-2" {...rest}>
+    {tags.docs.map((tag) => <Tag {tag} {showCount} {size} showActive />)}
 </div>

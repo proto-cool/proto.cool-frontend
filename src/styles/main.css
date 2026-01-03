@@ -116,7 +116,7 @@
     }
 
     .text-gradient {
-        @apply bg-clip-text text-transparent bg-[length:200%_auto] animate-[gradient-flow_14s_linear_infinite];
+        @apply bg-clip-text text-transparent bg-[length:200%_auto] animate-[gradient-flow_8s_linear_infinite];
         background-image: linear-gradient(
             45deg,
             var(--color-primary) 0%,

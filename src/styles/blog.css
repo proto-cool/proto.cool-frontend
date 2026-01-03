@@ -2,7 +2,7 @@
 
 #blog-post-content p > code,
 #blog-post-content li > code {
-    @apply text-theme-fg-tertiary bg-theme-bg-tertiary px-1.5 py-0.5 rounded text-[0.9em] inline;
+    @apply text-theme-fg-tertiary bg-theme-bg-tertiary px-1.5 py-0.5 rounded-md text-[0.9em] inline;
 }
 
 #blog-post-content ol {
@@ -18,7 +18,7 @@
 }
 
 #blog-post-content mark {
-    @apply bg-theme-color-primary px-1.5 py-0.5 rounded text-[0.9em] inline-flex items-center align-middle leading-none mx-0.5;
+    @apply bg-theme-color-primary px-1.5 py-0.5 rounded-md text-[0.9em] inline-flex items-center align-middle leading-none mx-0.5;
 }
 
 #blog-post .toc-current {
@@ -58,7 +58,7 @@
 #blog-post-content .shiki code {
     counter-reset: step;
     counter-increment: step 0;
-    @apply grid min-w-full w-fit py-4;
+    @apply grid min-w-full w-fit py-6;
     background-color: inherit;
 }
 
@@ -67,7 +67,7 @@
 }
 
 #blog-post-content .shiki code .line {
-    @apply px-4 border-l-2 border-transparent bg-transparent;
+    @apply px-6 border-l-2 border-transparent bg-transparent;
 }
 
 #blog-post-content .shiki code .line::before {
