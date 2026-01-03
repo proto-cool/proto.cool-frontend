@@ -11,7 +11,7 @@ const { headings, levels = 2 } = Astro.props as Props;
 const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
 ---
 
-<div class="relative bg-theme-bg-secondary rounded-2xl shadow-sm border border-theme-bg-tertiary/50 p-8 text-sm leading-tight overflow-hidden">
+<div class="relative bg-theme-bg-secondary rounded-2xl shadow-sm border border-theme-bg-tertiary/50 p-8 text-sm leading-snug overflow-hidden">
     <!-- Decorative corner glow -->
     <div
         class="absolute -top-12 -left-12 w-48 h-48 bg-theme-color-primary/5 blur-3xl rounded-full"
