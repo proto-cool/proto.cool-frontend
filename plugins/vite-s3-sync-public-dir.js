@@ -63,7 +63,7 @@ export default function viteS3SyncPublicDirPlugin({
                     if (!file.Key) continue;
 
                     // Ensure directory exists
-                    const filePath = path.join(process.cwd(), "public", file.Key);
+                    const filePath = path.join(process.cwd(), file.Key);
                     mkdirSync(path.dirname(filePath), { recursive: true });
 
                     console.log(`[s3-sync] Downloading: ${file.Key}`);
