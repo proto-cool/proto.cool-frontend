@@ -13,7 +13,7 @@ const hero = await getHeroContent();
 
 <section
     id="hero"
-    class="relative w-full pb-6 flex flex-col-reverse md:flex-row items-center gap-12"
+    class="relative w-full pb-8 flex flex-col-reverse md:flex-row items-center gap-12"
 >
     <div
         class="flex items-start flex-col gap-4 md:gap-12 description text-balance text-base"
@@ -29,15 +29,15 @@ const hero = await getHeroContent();
     </div>
     {
         SiteConfig.authorPhoto?.url ? (
-            <Image
-                class="aspect-square rounded-2xl shadow-md size-[240px]"
-                width={512}
-                height={512}
-                src={getImageSrc(SiteConfig.authorPhoto.url)}
-                alt={`$${SiteConfig.authorName} profile picture`}
-                data-cascade="fadeInZoom"
-                data-cascade-delay="0.5"
-            />
+            <div class="img-tint rounded-3xl shrink-0 shadow-md">
+                <Image
+                    class="aspect-square size-[240px]"
+                    width={512}
+                    height={512}
+                    src={getImageSrc(SiteConfig.authorPhoto.url)}
+                    alt={`$${SiteConfig.authorName} profile picture`}
+                />
+            </div>
         ) : null
     }
 </section>

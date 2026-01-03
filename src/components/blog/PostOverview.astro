@@ -31,13 +31,13 @@ const hashtagIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 </svg>`;
 ---
 
-<div {...rest}>
+<div class="group" {...rest}>
     {
         previewImageUrl && (
-            <div class="grid grid-cols-4 gap-4 mb-4">
+            <div class="grid grid-cols-4 gap-4 mb-8">
                 <a
                     href={`/blog/post/${post.slug}/`}
-                    class="col-span-4 col-start-1 lg:col-span-3 lg:col-start-2 rounded-xl opacity-95 dark:opacity-90 hover:opacity-100 aspect-video object-cover transition-opacity duration-300 group overflow-hidden"
+                    class="img-tint-saturated group col-span-4 col-start-1 lg:col-span-3 lg:col-start-2 rounded-3xl aspect-video object-cover overflow-hidden shadow-sm"
                     data-astro-prefetch
                 >
                     <Image
@@ -47,74 +47,80 @@ const hashtagIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                         width={768}
                         quality="high"
                         loading="eager"
-                        class="w-full h-auto group-hover:scale-[1.025] transition-transform duration-300"
+                        class="w-full h-auto"
                     />
                 </a>
             </div>
         )
     }
-    <article class="grid grid-cols-4 gap-4">
+    <article class="grid grid-cols-4 gap-4 lg:gap-8">
         <a
-            class="col-span-4 lg:col-span-3 group relative flex flex-col gap-4 items-start lg:bg-transparent bg-theme-bg-secondary rounded-xl p-4 lg:p-0"
+            class="col-span-4 lg:col-span-3 relative flex flex-col gap-6 items-start group lg:bg-transparent bg-theme-bg-secondary/30 rounded-3xl p-8 lg:p-0"
             href={`/blog/post/${post.slug}/`}
             data-astro-prefetch
         >
             <div
-                class="hidden lg:block lg:absolute rounded-xl -inset-x-3 -inset-y-2 z-0 scale-95 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 bg-theme-bg-secondary"
+                class="hidden lg:block lg:absolute rounded-[2.5rem] -inset-x-6 -inset-y-4 z-0 scale-[0.98] opacity-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-100 bg-theme-bg-secondary/50"
             >
             </div>
-            <div class="relative z-10 flex flex-col gap-2 items-start w-full">
+            <div class="relative z-10 flex flex-col gap-3 items-start w-full">
                 <div
-                    class="flex lg:hidden flex-row gap-4 items-center justify-center border-l-2 <border-theme-fg-secondary></border-theme-fg-secondary> pl-4 text-xs description"
+                    class="flex lg:hidden flex-row gap-4 items-center justify-center border-l-2 border-theme-bg-tertiary pl-4 text-xs description"
                 >
                     <div class="flex items-center">
-                        <Fragment set:html={calendarIcon} />
-                        <time datetime={createdAt} class="whitespace-nowrap">
+                        <span class="text-theme-fg-tertiary">
+                            <Fragment set:html={calendarIcon} />
+                        </span>
+                        <time datetime={createdAt} class="whitespace-nowrap ml-1.5">
                             {formatDate(createdAt)}
                         </time>
                     </div>
 
                     <div class="flex items-center">
-                        <Fragment set:html={clockIcon} />
-                        <span class="whitespace-nowrap">
+                        <span class="text-theme-fg-tertiary">
+                            <Fragment set:html={clockIcon} />
+                        </span>
+                        <span class="whitespace-nowrap ml-1.5">
                             {post.readTime}
                         </span>
                     </div>
 
                     <div class="flex items-center">
-                        <Fragment set:html={hashtagIcon} />
-                        <span class="whitespace-nowrap ml-0.5">
+                        <span class="text-theme-fg-tertiary">
+                            <Fragment set:html={hashtagIcon} />
+                        </span>
+                        <span class="whitespace-nowrap ml-1">
                             {(tag as PTag).text}
                         </span>
                     </div>
                 </div>
 
                 <!-- title -->
-                <h1 class="text-xl lowercase font-bold md:text-2xl">
+                <h1 class="text-xl lowercase font-medium md:text-3xl text-theme-fg-primary">
                     <span class="underline-hover-group">{title}</span>
                 </h1>
 
                 <!-- subtitle -->
                 {
                     subtitle && (
-                        <span class="text-base md:text-lg opacity-85 lowercase">{subtitle}</span>
+                        <span class="text-base md:text-lg opacity-85 lowercase font-medium text-theme-fg-secondary">{subtitle}</span>
                     )
                 }
 
                 <!-- description -->
-                {description && <p class="description mt-4 text-sm lg:text-base">{description}</p>}
+                {description && <p class="description mt-4 text-sm lg:text-base leading-relaxed">{description}</p>}
 
                 <span
-                    class="px-2 -mt-2 text-sm text-theme-fg-secondary justify-self-end flex items-center gap-1 self-end lowercase opacity-60 group-hover:opacity-90 transition-opacity"
+                    class="mt-2 text-sm text-theme-fg-tertiary flex items-center gap-1.5 lowercase font-medium group-hover:text-theme-color-primary transition-all"
                 >
                     Read more
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        stroke-width="1.5"
+                        stroke-width="2"
                         stroke="currentColor"
-                        class="inline-block size-4 transition-transform group-hover:translate-x-1 mt-0.5"
+                        class="inline-block size-3.5 transition-transform group-hover:translate-x-1 mt-0.5"
                     >
                         <path
                             stroke-linecap="round"
@@ -124,22 +130,25 @@ const hashtagIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                 </span>
             </div>
         </a>
-        <div class="hidden lg:flex flex-col gap-2 items-start order-first pt-1 description">
-            <div class="flex items-center">
-                <Fragment set:html={calendarIcon} />
-                <time datetime={createdAt} class="whitespace-nowrap text-sm ml-1">
+        <div class="hidden lg:flex flex-col gap-3 items-start order-first pt-2 description">
+            <div class="flex items-center cursor-default">
+                <div class="text-theme-fg-tertiary">
+                    <Fragment set:html={calendarIcon} />
+                </div>
+                <time datetime={createdAt} class="whitespace-nowrap text-sm ml-2">
                     {formatDate(createdAt)}
                 </time>
             </div>
 
-            <div class="flex items-center">
-                <Fragment set:html={clockIcon} />
-                <span class="whitespace-nowrap text-sm ml-1">
+            <div class="flex items-center cursor-default">
+                <div class="text-theme-fg-tertiary">
+                    <Fragment set:html={clockIcon} />
+                </div>
+                <span class="whitespace-nowrap text-sm ml-2">
                     {post.readTime}
                 </span>
             </div>
-
-            <Tag tag={tag} />
+            <Tag tag={tag} size="small" />
         </div>
     </article>
 </div>

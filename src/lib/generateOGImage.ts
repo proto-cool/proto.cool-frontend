@@ -98,19 +98,19 @@ const generateOGImage = async ({
                     props: {
                         style: {
                             width: "100%",
-                            height: "auto",
-                            marginTop: "auto",
+                            flexGrow: "1",
+                            margin: "32px 0",
                             maxHeight: "314px",
-                            marginBottom: "auto",
                             backgroundColor: colors.base["800"],
-                            borderRadius: "36px",
+                            borderRadius: "64px",
                             display: "flex",
                             flexDirection: "column",
                             justifyContent: "center",
                             alignItems: "center",
                             textAlign: "center",
-                            paddingTop: "32px",
-                            paddingBottom: "32px",
+                            padding: "32px",
+                            position: "relative",
+                            overflow: "hidden",
                         },
                         children: [
                             hasImage
@@ -128,7 +128,7 @@ const generateOGImage = async ({
                                               backgroundRepeat: "no-repeat",
                                               backgroundSize: `${ogBGWidth}px ${ogBGHeight}px`,
                                               opacity: "0.1",
-                                              borderRadius: "36px",
+                                              borderRadius: "64px",
                                           },
                                       },
                                   }
@@ -140,8 +140,9 @@ const generateOGImage = async ({
                                         fontSize: "72px",
                                         marginTop: "-8px",
                                         marginBottom: "8px",
-                                        fontWeight: "600",
+                                        fontWeight: "500",
                                         textWrap: "balance",
+                                        lineHeight: "1.1",
                                     },
                                     children: title,
                                 },
@@ -156,11 +157,12 @@ const generateOGImage = async ({
                                         marginBottom: "4px",
                                         textOverflow: "ellipsis",
                                         textWrap: "balance",
+                                        lineHeight: "1.2",
                                     },
                                     children: subtitle,
                                 },
                             },
-                        ],
+                        ].filter(Boolean),
                     },
                 },
                 {
@@ -177,13 +179,10 @@ const generateOGImage = async ({
                                 props: {
                                     style: {
                                         display: "flex",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        fontFamily: "'CommitMono', sans-serif",
                                         fontSize: "32px",
                                         gap: "8px",
-                                        borderRadius: "12px",
-                                        padding: "8px 16px",
+                                        borderRadius: "999px",
+                                        padding: "8px 24px",
                                         backgroundColor: colors.base["800"],
                                         color: colors.base["400"],
                                     },
@@ -203,12 +202,7 @@ const generateOGImage = async ({
                                         color: colors.base["500"],
                                     },
                                     children: [
-                                        {
-                                            type: "fragment",
-                                            props: {
-                                                children: "by",
-                                            },
-                                        },
+                                        "by",
                                         SiteConfig.authorPhoto && {
                                             type: "img",
                                             props: {
@@ -225,12 +219,12 @@ const generateOGImage = async ({
                                             type: "span",
                                             props: {
                                                 style: {
-                                                    fontWeight: "600",
+                                                    fontWeight: "500",
                                                 },
                                                 children: SiteConfig.authorName,
                                             },
                                         },
-                                    ],
+                                    ].filter(Boolean),
                                 },
                             },
                         ],
@@ -249,30 +243,17 @@ const generateOGImage = async ({
         fonts: [
             {
                 name: "Bio Sans",
-                data: Buffer.from(
-                    fs.readFileSync("./public/fonts/biosans-regular-webfont.woff").buffer,
-                ),
+                data: fs.readFileSync("./public/fonts/biosans-regular-webfont.woff"),
                 weight: 400,
             },
             {
                 name: "Bio Sans",
-                data: Buffer.from(
-                    fs.readFileSync("./public/fonts/biosans-bold-webfont.woff").buffer,
-                ),
+                data: fs.readFileSync("./public/fonts/biosans-bold-webfont.woff"),
                 weight: 600,
             },
             {
                 name: "Chinook",
-                data: Buffer.from(
-                    fs.readFileSync("./public/fonts/chinook-regular-webfont.woff").buffer,
-                ),
-                weight: 400,
-            },
-            {
-                name: "CommitMono",
-                data: Buffer.from(
-                    fs.readFileSync("./public/fonts/CommitMono-VariableFont.ttf").buffer,
-                ),
+                data: fs.readFileSync("./public/fonts/chinook-regular-webfont.woff"),
                 weight: 400,
             },
         ],

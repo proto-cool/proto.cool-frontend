@@ -7,6 +7,7 @@ import BlogLayout from "@layouts/BlogLayout.astro";
 // components
 import Pagination from "@components/core/pagination/Pagination.astro";
 import PostOverview from "@components/blog/PostOverview.astro";
+import Button from "@components/core/Button.astro";
 
 // utils
 import { getAllTags, getPostsByTag } from "@lib/payload/utils";
@@ -52,10 +53,7 @@ const { tag, page } = Astro.props as { tag: Tag; page: PaginatedResponse<Post> }
                 Select a different post tag to filter posts for other topics.
                 <br />
                 <br />
-                Or, go back to <a
-                    class="button inline-block px-2 py-0.5 button secondary text-sm"
-                    href="/blog/1/">all blog posts</a
-                >
+                Or, go back to <Button variant="secondary" size="sm" href="/blog/1/">all blog posts</Button>
             </p>
         </div>
 

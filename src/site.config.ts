@@ -19,6 +19,16 @@ export interface NavLinkProps extends NavLink {
     type: "normal" | "mobile";
 }
 
+export interface Theme {
+    name: string;
+    label: string;
+    preview: {
+        bg: string;
+        fg: string;
+        accent: string;
+    };
+}
+
 export interface SiteConfigProps {
     name: string;
     title: string;
@@ -31,6 +41,7 @@ export interface SiteConfigProps {
     useAnimations?: boolean;
     navLinks: NavLink[];
     codeInjection: string | null;
+    themes: Theme[];
 }
 
 export type ContentType = "base" | "post" | "page";
@@ -69,6 +80,82 @@ const SiteConfig: SiteConfigProps = {
 
     // Used to calculate the date correctly for the site
     timezone: payloadSiteSettings.siteSettings.timezone,
+
+    // Themes
+    themes: [
+        {
+            name: "lime",
+            label: "lime",
+            preview: {
+                bg: "#f4f4f5",
+                fg: "#3f3f46",
+                accent: "#57a90a",
+            },
+        },
+        {
+            name: "obsidian",
+            label: "obsidian",
+            preview: {
+                bg: "#18181b",
+                fg: "#e4e4e7",
+                accent: "#6dd40c",
+            },
+        },
+        {
+            name: "nordic",
+            label: "nordic",
+            preview: {
+                bg: "#f8fafc",
+                fg: "#334155",
+                accent: "#0284c7",
+            },
+        },
+        {
+            name: "abyss",
+            label: "abyss",
+            preview: {
+                bg: "#0b1120",
+                fg: "#f1f5f9",
+                accent: "#38bdf8",
+            },
+        },
+        {
+            name: "everglade",
+            label: "everglade",
+            preview: {
+                bg: "#0a1a12",
+                fg: "#e0f2f1",
+                accent: "#34d399",
+            },
+        },
+        {
+            name: "latte",
+            label: "latte",
+            preview: {
+                bg: "#fffaf3",
+                fg: "#57534e",
+                accent: "#a85400",
+            },
+        },
+        {
+            name: "ember",
+            label: "ember",
+            preview: {
+                bg: "#1a1210",
+                fg: "#fff7ed",
+                accent: "#fb923c",
+            },
+        },
+        {
+            name: "void",
+            label: "void",
+            preview: {
+                bg: "#000000",
+                fg: "#ffffff",
+                accent: "#b4b4ba",
+            },
+        },
+    ],
 };
 
 export default SiteConfig;

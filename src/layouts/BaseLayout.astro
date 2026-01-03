@@ -32,7 +32,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="en" transition:animate="fade" data-theme="dark">
+<html lang="en" transition:animate="fade" data-theme="obsidian">
     <Head
         type={type}
         title={title}
@@ -42,10 +42,9 @@ const {
     />
     <body
         class:list={[
-            "overflow-y-scroll",
             "flex",
             "flex-col",
-            "min-h-[100vh]",
+            "min-h-screen",
             "relative",
             {
                 "use-animations": SiteConfig.useAnimations === true,
@@ -53,42 +52,17 @@ const {
         ]}
     >
         <Nav />
-        <main class="container flex-grow pt-24 md:pt-32 lg:pt-40 pb-8 lg:pb-16">
+        <main class="container flex-grow pt-24 md:pt-32 lg:pt-40">
             <slot />
         </main>
         <Footer />
         <Noise />
 
         <script is:inline>
-            const handleToggleClick = () => {
-                const element = document.documentElement;
-                const currentValue = element.getAttribute("data-theme");
-
-                element.setAttribute("data-theme", currentValue === "light" ? "dark" : "light");
-
-                localStorage.setItem("theme", currentValue === "light" ? "dark" : "light");
-            };
-
-            const setupThemeToggles = () => {
-                const themeButtons = document.querySelectorAll("[data-theme-toggle]");
-
-                themeButtons.forEach((button) => {
-                    button.addEventListener("click", handleToggleClick);
-                });
-            };
-
             document.addEventListener("astro:after-swap", function () {
                 const element = document.documentElement;
-
-                element.setAttribute(
-                    "data-theme",
-                    window.getTheme() === "light" ? "light" : "dark",
-                );
-
-                setupThemeToggles();
+                element.setAttribute("data-theme", window.getTheme());
             });
-
-            setupThemeToggles();
         </script>
     </body>
 </html>

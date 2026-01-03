@@ -6,12 +6,18 @@ import SocialIcon from "@components/social/SocialIcon.astro";
 import SiteConfig from "@/site.config";
 
 const { className, ...rest } = Astro.props;
+
+const links = SiteConfig.socialLinks;
 ---
 
-<div class:list={["flex gap-3 bg-theme-bg-secondary rounded-full px-3 py-2", className]} {...rest}>
+<div class:list={["flex flex-wrap gap-2", className]} {...rest}>
     {
-        SiteConfig.socialLinks.map((social) => (
-            <SocialIcon href={social.link} social={social.platform} />
+        links.map((social) => (
+            <SocialIcon
+                href={social.link}
+                social={social.platform}
+                class="bg-theme-bg-secondary hover:bg-theme-bg-tertiary rounded-full p-2.5 transition-all duration-200 active:scale-95 flex items-center justify-center"
+            />
         ))
     }
 </div>

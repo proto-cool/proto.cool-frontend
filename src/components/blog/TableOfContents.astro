@@ -11,11 +11,18 @@ const { headings, levels = 2 } = Astro.props as Props;
 const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
 ---
 
-<div class="bg-theme-bg-secondary rounded-md shadow p-3 text-sm leading-tight">
-    <h4 class="text-xl font-medium">
-        table of <span class="text-theme-color-primary">contents</span>
-    </h4>
-    <ul class="mt-4 flex flex-col gap-2 !list-none !ml-0">
+<div class="relative bg-theme-bg-secondary rounded-2xl shadow-sm border border-theme-bg-tertiary/50 p-8 text-sm leading-tight overflow-hidden">
+    <!-- Decorative corner glow -->
+    <div
+        class="absolute -top-12 -left-12 w-48 h-48 bg-theme-color-primary/5 blur-3xl rounded-full"
+    >
+    </div>
+
+    <div class="relative z-10 flex flex-col gap-6">
+        <h3 class="text-xl font-medium lowercase text-theme-fg-primary">
+            table of <span class="text-theme-color-primary">contents</span>
+        </h3>
+    <ul class="flex flex-col gap-2 !list-none !ml-0">
         {
             filteredHeadings.map((heading) => (
                 <li
@@ -35,6 +42,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
             ))
         }
     </ul>
+    </div>
 </div>
 
 <style>
@@ -93,9 +101,6 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
         });
     }
 
-    // runs on initial page load
-    initTOC();
-
     // runs on view transitions navigation
-    document.addEventListener("astro:after-swap", initTOC);
+    document.addEventListener("astro:page-load", initTOC);
 </script>
